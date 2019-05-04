@@ -63,12 +63,15 @@ namespace DataAccess.Dao
             Parameters.Add(param);
         }
         
-        public void AddDateTimeParam(string paramName, string paramValue)
+        public void AddDateTimeParam(string paramName, DateTime paramValue)
         {
+            string sqlDate = paramValue.ToString("yyyy-MM-dd HH:mm:ss");
+
             var param = new SqlParameter("@P_" + paramName, SqlDbType.DateTime)
             {
-                Value = DateTime.ParseExact(paramValue, "dd/MM/yyyy", null)
+                Value = sqlDate
             };
+
             Parameters.Add(param);
         }
 
