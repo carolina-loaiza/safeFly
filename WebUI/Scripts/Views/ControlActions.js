@@ -216,8 +216,27 @@
 		});
 	}
 
+  this.GetToSelect = function (service, callback) {
+        var array = []
 
-	};
+        var jqxhr = $.get(this.GetUrlApiService(service), function (response) {
+            var ctrlActions = new ControlActions();
+            ctrlActions.ShowMessage('I', response.Message);
+            var info = [];
+            for (var prop in response) {
+                info.push(response[prop]);
+            }
+            callback(info, true);
+        })
+            .fail(function (response) {
+                var data = response.responseJSON;
+                var ctrlActions = new ControlActions();
+                ctrlActions.ShowMessage('E', data.ExceptionMessage);
+
+                callback([], false);
+            })
+    };
+};
 
 //Custom jquery actions
 $.login = function (url, email, password, callback) {

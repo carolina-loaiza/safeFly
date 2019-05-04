@@ -153,9 +153,6 @@ namespace WebUI.Controllers
         {
             return View();
         }
-
-    }
-}
         public ActionResult listSchedule()
         {
             return View();
@@ -190,3 +187,7 @@ namespace WebUI.Controllers
         {
             return View();
         }
+
+    }
+}
+        
