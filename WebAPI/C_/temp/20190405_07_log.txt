@@ -1,0 +1,10 @@
+
+Log Entry : 7:53:31 PM Friday, April 5, 2019
+  :
+  :Exception of type 'Exceptions.BussinessException' was thrown.
+-------------------------------
+
+Log Entry : 7:53:53 PM Friday, April 5, 2019
+  :
+  :Exception of type 'Exceptions.BussinessException' was thrown.
+-------------------------------

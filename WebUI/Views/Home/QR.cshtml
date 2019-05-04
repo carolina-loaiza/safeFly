@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @using (@Html.BeginForm("QR", "Home", FormMethod.Post))
+    {
+        <input type="text" name="qrcode" />
+        <input type="submit" value="Generate" />
+    }
+    <hr />
+    @if (@ViewBag.QRCodeImage != null)
+    {
+        <img src="@ViewBag.QRCodeImage" alt="" style="height:150px;width:150px" />
+    }

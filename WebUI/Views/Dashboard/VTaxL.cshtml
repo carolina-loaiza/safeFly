@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "VRole";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<script src="~/Scripts/Views/BaseClass.js"></script>
+<script src="~/Scripts/Views/VTax.js"></script>
+<script>
+    $(document).ready(function () {
+
+        const vRol = new VTax();
+        vRol.RetrieveAll();
+    });
+</script>
+<h2>Tax List</h2>
+
+@Html.CtrlTable(viewName: "VTax", id: "tblTax", title: "Role List",
+    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields" )

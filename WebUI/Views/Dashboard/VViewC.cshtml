@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "VView";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<script src="~/Scripts/Views/BaseClass.js"></script>
+<script src="~/Scripts/Views/VView.js"></script>
+
+<h2>New View</h2>
+<div class="card border-secondary" style="margin-top: 50px;">
+    <div class="card-header">
+        <div class="row pull-left">
+            <div class="col-md-12">View</div>
+            <div class="col-md-4">
+                @Html.CtrlButton("VView", "btnCreate", "Save", "Create", "success")
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmTax">
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                
+                                @Html.CtrlInput("Name", "text", "View name", columnDataName: "Name")
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput("Description", "text", "Descripion", columnDataName: "Description")
+                            </div>
+                            @*@Html.CtrlDropDown(id: "drpGender", label: "Gender", listId: "LST_GENERO")*@
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿<!--
+    el script corresponde al layout de la tabla, le da metodos y filtros, entre otras cosas
+    la importa de la libreria datatables de jquery
+
+    https://datatables.net/examples/basic_init/zero_configuration.html
+
+    el '#-#Id-' funciona como tag de reemplazo para decirle cual tabla debe hacer, seria el id
+    y tiene como valor de Id: (ejemplo) '#tblCustomers' proveniente de vCustomers.cshtml
+ -->
+<script>
+    $(document).ready(function () {
+        var table = $('#-#Id-').DataTable();
+
+        //el siguiente codigo agrega un eventoClic y se parametriza en OnSelect (evento)
+        $('#-#Id- tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            sessionStorage.setItem('-#Id-_selected', data);
+            console.log(data);
+
+            //hace una instancia de viewName quien es un tag de reemplazo viene de vCustomers.cshtml
+            // data vendria a ser el registro que fue seleccionado en la tabla cuando se le da clic
+            //vCustomers esta definido en la carpeta Scripts, View: vCustomers.js (esta clase se llama igual
+            //a como se llama la vista)
+            var view = new -#ViewName-();
+            if (view != undefined) {
+                view.-#FunctionName-(data);
+              //  view.BindFields - (data);
+            }
+        });
+    });
+</script>
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">-#Title-</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="-#Id-" width="100%" cellspacing="0" ColumnsDataName="-#ColumnsDataName-">
+                <thead>
+                    <tr>
+                        -#ColumnHeaders-
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿e
+@{
+    ViewBag.Title = "VRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Views/BaseClass.js"></script>
+<script src="~/Scripts/Views/VRole.js"></script>
+
+<h2>Lista de Roles</h2>
+
+@Html.CtrlTable(viewName: "VView", id: "tblView", title: "Views List",
+    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields" )
+<script>
+    $(document).ready(function () {
+
+        const vRol = new VView();
+        vRol.RetrieveAll();
+    });
+</script>

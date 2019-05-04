@@ -1,0 +1,9 @@
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\bin\Debug\Entities-POJO.dll
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\bin\Debug\Entities-POJO.pdb
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\DataAccess\obj\Debug\DataAccess.pdb

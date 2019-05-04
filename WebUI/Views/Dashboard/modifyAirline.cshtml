@@ -1,0 +1,51 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vAirline.js"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+@Html.CtrlTable(viewName: "vAirline", id: "tblAirlines", title: "Lista de Aerolíneas",
+    columnsTitle: "ID,Airline,Business,Administrator,Email,Phone Number,Representant Legal,Inscription Date,Status", ColumnsDataName: "ID,Name,BusinessName,Admin,Email,PhoneNumber,RepresentantLegal,InscriptionDate,Status", onSelectFunction: "BindFields")
+    
+
+<div>
+
+    <div class="card border-left-primary shadow h-100" style="margin-top: 50px;" id="cardAirline">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-8"><h5>Edit: </h5> <h6 id="airlineName"></h6></div>
+                <div class="col-md-4">
+                    @Html.CtrlButton(viewName: "vAirline", id: "btnModifyAirline", label: "Save", onClickFunction: "ModifyAirline", buttonType: "success")
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bs-component">
+                        <form id="formModifyAirline">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.CtrlInput(id: "txtID", type: "text", label: "ID", columnDataName: "ID")
+                                    @Html.CtrlInput(id: "txtName", type: "text", label: "Name", columnDataName: "Name")
+                                    @Html.CtrlInput(id: "txtBusinessName", type: "text", label: "Business Name", columnDataName: "BusinessName")
+                                    @Html.CtrlInput(id: "txtAdmin", type: "text", label: "Administrator", columnDataName: "Admin")
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                                    @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                                    @Html.CtrlInput(id: "txtRepresentantLegal", type: "text", label: "Representant Legal", columnDataName: "RepresentantLegal")
+                                    @Html.CtrlInput(id: "txtUrlLogo", type: "text", label: "Url Logo", columnDataName: "UrlLogo")
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

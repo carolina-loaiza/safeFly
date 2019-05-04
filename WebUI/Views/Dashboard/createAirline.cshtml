@@ -1,0 +1,123 @@
+﻿<script src="~/Scripts/Views/vAirline.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Application for airline use in airports.</h1>
+</div>
+
+<div class="accordion" id="accordionExample">
+    <div class="card border-left-primary shadow h-100 ">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button id="collapseOne-button" class="btn btn-link text-left text-decoration-none font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Step #1: Information of the administrator of the airline.
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <form id="frmEdition">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtID", type: "text", label: "Identification number", columnDataName: "ID")
+                        </div>
+                        <div class="col-sm-6 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtFirstName", type: "text", label: "First Name", columnDataName: "FirstName")
+                        </div>
+                        <div class="col-sm-4 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtSecondName", type: "text", label: "Second Name", columnDataName: "SecondName")
+                        </div>
+                        <div class="col-sm-4 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtLastName1", type: "text", label: "Last Name", columnDataName: "LastName1")
+                        </div>
+                        <div class="col-sm-4 mb-12 mb-sm-0">
+                            @Html.CtrlInput(id: "txtLastName2", type: "text", label: "Second Last Name", columnDataName: "LastName2")
+                        </div>
+                        <div class="col-sm-12 mb-12 mb-sm-0">
+                            @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                        </div>
+                        <div class="col-sm-6 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtBirthDate", type: "date", label: "Birthdate", columnDataName: "BirthDate")
+                        </div>
+                        <div class="col-sm-6 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                        </div>
+                        <div class="col-sm-6 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtPassword", type: "password", label: "Password", columnDataName: "Password")
+                        </div>
+                        <div class="col-sm-6 mb-6 mb-sm-0">
+                            @Html.CtrlInput(id: "txtConfirmPass", type: "password", label: "Confirm Password", columnDataName: "Confirm")
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-6">
+                        @Html.CtrlButton(viewName: "vAirline", id: "btnCreate", label: "Next", onClickFunction: "CreateUser", buttonType: "success")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-left-primary shadow h-100 ">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button disabled id="collapseTwo-button"  class="btn btn-link collapsed text-left text-decoration-none font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Step #2: Information of the airline.
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <form id="formAirline">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="d-none" type="text" id="txtID" ColumnDataName="ID">
+                            @Html.CtrlInput(id: "txtName", type: "text", label: "Name", columnDataName: "Name")
+                            @Html.CtrlInput(id: "txtBusinessName", type: "text", label: "Business Name", columnDataName: "BusinessName")
+                            @Html.CtrlInput(id: "txtAdmin", type: "text", label: "Administrator", columnDataName: "Admin")
+                        </div>
+                        <div class="col-md-6">
+                            @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                            @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                            @Html.CtrlInput(id: "txtRepresentantLegal", type: "text", label: "Representant Legal", columnDataName: "RepresentantLegal")
+                            @Html.CtrlInput(id: "txtUrlLogo", type: "text", label: "Url Logo", columnDataName: "UrlLogo")
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-6">
+                        @Html.CtrlButton(viewName: "vAirline", id: "btnCreateAirline", label: "Next", onClickFunction: "CreateAirline", buttonType: "success")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-left-primary shadow h-100 ">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button disabled id="collapseThree-button" class="btn btn-link collapsed text-left text-decoration-none font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Step #3: Select the airports.
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <form id="formSolicitude">
+                    <div class="row" id="airportListContainer">
+
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-6">
+                        @Html.CtrlButton(viewName: "vAirline", id: "btnCreateSolicitude", label: "Send solicitude", onClickFunction: "CreateSolicitude", buttonType: "success")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vBusinessPremises.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.CtrlTable(viewName: "vBusinessPremises", id: "tblBusiness", title: "Business premises list",
+    columnsTitle: "Id,Id airport,Rental amount,Description,Tenant,Id tenant,Phone,Area,Comerce number,Status", ColumnsDataName: "ID,AirportID,AlquilerAmount,Description,Tenant,TenantID,Phone,Area,ComerceNumber,Status", onSelectFunction: "BindFields")
+
+
+<div class="card border-secondary" style="margin-top: 50px;">
+    <div class="card-header">
+        <div class="row pull-right">
+            <div class="col-md-7">Business premises edition</div>
+            <div class="col-md-5">
+                @Html.CtrlButton(viewName: "vBusinessPremises", id: "btnCreate", label: "Save", onClickFunction: "Create", buttonType: "success")
+                @Html.CtrlButton(viewName: "vBusinessPremises", id: "btnUpdate", label: "Modify", onClickFunction: "Update", buttonType: "info")
+                @Html.CtrlButton(viewName: "vBusinessPremises", id: "btnDelete", label: "Desactivate", onClickFunction: "Delete", buttonType: "danger")
+                @Html.CtrlButton(viewName: "vBusinessPremises", id: "btnActivar", label: "Activate", onClickFunction: "Activar", buttonType: "success")
+
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtID", type: "text", label: "Id", columnDataName: "ID")
+                                @Html.CtrlInput(id: "txtAirportID", type: "text", label: "Id Airport", columnDataName: "AirportID")
+                                @Html.CtrlInput(id: "txtAlquilerAmount", type: "text", label: "Rental amount", columnDataName: "AlquilerAmount")
+                                @Html.CtrlInput(id: "txtDescription", type: "text", label: "Description", columnDataName: "Description")
+                                @Html.CtrlInput(id: "txtTenant", type: "text", label: "Tenant", columnDataName: "Tenant")
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtTenantID", type: "text", label: "Tenant id", columnDataName: "TenantID")
+                                @Html.CtrlInput(id: "txtPhone", type: "text", label: "Phone", columnDataName: "Phone")
+                                @Html.CtrlInput(id: "txtArea", type: "text", label: "Area", columnDataName: "Area")
+                                @Html.CtrlInput(id: "txtComerceNumber", type: "text", label: "Comerce number", columnDataName: "ComerceNumber")
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

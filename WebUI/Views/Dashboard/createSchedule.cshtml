@@ -1,0 +1,80 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Controllers/cSchedule.js"></script>
+<script src="~/Scripts/Views/vSchedule.js"></script>
+
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+<script src="~/Scripts/Views/Mapa.js"></script>
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet" />
+<link href="~/Content/Map.css" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-header flex-row">
+        <div class="row">
+            <div class="col-md-8">Step #1: Information of the schedule</div>
+            <div class="col-md-4">
+                @Html.CtrlButton(viewName: "vSchedule", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
+                @Html.CtrlButton(viewName: "cSchedule", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "success")
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div hidden>
+                                @Html.CtrlInput(id: "txtId", type: "text", label: "Id", columnDataName: "Id")
+                                @Html.CtrlInput(id: "txtAproovement", type: "text", label: "Aproovement", columnDataName: "Aproovement")
+                                @Html.CtrlInput(id: "txtGate", type: "text", label: "Gate", columnDataName: "Gate")
+                                @Html.CtrlInput(id: "txtDeparture", type: "text", label: "Departure", columnDataName: "Departure")
+                                @Html.CtrlInput(id: "txtFlyNumber", type: "text", label: "FlyNumber", columnDataName: "FlyNumber")
+                            </div>
+
+                            <div class="col-md-6">
+                                <Label for="sltAproovement">Aproovement</Label>
+                                <select id="sltAproovement" class="form-control">
+                                    <option value="value">Select the status of the schedule</option>
+                                </select>
+
+                                <Label for="sltGate">Gate</Label>
+                                <select id="sltGate" class="form-control">
+                                    <option value="">Select the gate</option>
+                                </select>
+
+                                <Label for="sltDeparture">Departure</Label>
+                                <select id="sltDeparture" class="form-control">
+                                    <option value="value">Select the departure</option>
+                                </select>
+
+                                <Label for="sltFlight">Flight</Label>
+                                <select id="sltFlight" class="form-control">
+                                    <option value="">Select the flight</option>
+                                </select>
+                            </div>
+                                <div class="col-md-6">
+
+                                    @Html.CtrlInput(id: "txtDestiny", type: "text", label: "Destiny", columnDataName: "Destiny")
+                                    @Html.CtrlInput(id: "txtDepartureDate", type: "datetime-local", label: "Departure date", columnDataName: "DepartureDate")
+                                    @Html.CtrlInput(id: "txtArriveDate", type: "datetime-local", label: "Arrive date", columnDataName: "ArriveDate")
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h3 class="text-center">Select the route of the flight</h3>
+        <div id="map"></div>
+    </div>
+</div>
+

@@ -1,0 +1,10 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vAirline.js"></script>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.CtrlTable(viewName: "vAirlineList", id: "tblAirlines", title: "Airlines List",
+    columnsTitle: "ID,Airline name,Business name,Administrator ID,Email,Phone Number,Representant Legal,Inscription Date,Status", ColumnsDataName: "ID,Name,BusinessName,Admin,Email,PhoneNumber,RepresentantLegal,InscriptionDate,Status", onSelectFunction: "BindFields")

@@ -1,0 +1,63 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vFlight.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-header flex-row">
+        <div class="row">
+            <div class="col-md-8">Step #1: Information of the flight</div>
+            <div class="col-md-4">
+                @Html.CtrlButton(viewName: "vFlight", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
+                <div hidden>
+                    @Html.CtrlButton(viewName: "vFlight", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "success")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div hidden>
+                                    @Html.CtrlInput(id: "txtFlyNumber", type: "number", label: "Fly number", columnDataName: "FlyNumber")
+                                </div>
+                                <label for="sltTypeFlight">Type flight</label>
+                                <select id="sltTypeFlight" class="form-control">
+                                    <option value="">Select the type flight</option>
+                                    <option value="Normal">Vuelo normal</option>
+                                    <option value="Carga">Vuelo de carga</option>
+                                </select>
+                                @*@Html.CtrlInput(id: "txtSeatsQuantify", type: "time", label: "", columnDataName: "")*@
+                                @Html.CtrlInput(id: "txtSeatsQuantify", type: "number", label: "Seats quantify", columnDataName: "SeatsQuantify")
+                                @Html.CtrlInput(id: "txtFirstClassSeats", type: "number", label: "First class seats", columnDataName: "FirstClassSeats")
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtBusinessClassSeats", type: "number", label: "Business class seats", columnDataName: "BusinessClassSeats")
+                                @Html.CtrlInput(id: "txtEconomicClassSeats", type: "number", label: "Economic class seats", columnDataName: "EconomicClassSeats")
+                                <label for="cmbStatus">Status</label>
+                                <select  id="cmbStatus" class="form-control">
+                                    <option value="Atrasado">Atrasado</option>
+                                    <option value="Cancelado">Cancelado</option>
+                                    <option value="En curso">En curso</option>
+                                    <option value="A tiempo">A tiempo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,54 @@
+﻿<script src="~/Scripts/Views/vCoin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    <!--El siguiente Layout se muestra en CADA VISTA, es el header donde aparecen las opciones de la pagina (parte azul)  -->
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+
+
+@Html.CtrlTable(viewName: "vCoin", id: "tblCoin", title: "Currency List", //ColumnsDataName se refiere  al nombre de las variables en el POJO
+    columnsTitle: "Currency Name,Amount,Symbol,Status", ColumnsDataName: "CoinName,Amount,Symbol,Status", onSelectFunction: "BindFields")
+
+
+
+<div class="card border-secondary" style="margin-top: 50px;">
+    <div class="card-header">
+        <div class="row pull-right">
+            <div class="col-md-8">Edit Currency Information</div>
+            <div class="col-md-4">
+                @*@Html.CtrlButton(viewName: "vCoin", id: "btnCreate", label: "Save", onClickFunction: "Create", buttonType: "success")*@
+                @Html.CtrlButton(viewName: "vCoin", id: "btnUpdate", label: "Save changes", onClickFunction: "Update", buttonType: "info")
+                @Html.CtrlButton(viewName: "vCoin", id: "btnDelete", label: "Delete", onClickFunction: "Delete", buttonType: "danger")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="card-body">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bs-component">
+                <form id="frmEdition">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.CtrlInput(id: "txtCoin", type: "text", label: "Currency", columnDataName: "CoinName")
+                            @Html.CtrlInput(id: "txtAmount", type: "number", label: "Amount", columnDataName: "Amount")
+                        </div>
+                        <div class="col-md-6">
+                            @Html.CtrlInput(id: "txtSymbol", type: "text", label: "Symbol", columnDataName: "Symbol")
+                            @Html.CtrlInput(id: "txtStatus", type: "text", label: "Status", columnDataName: "Status")
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

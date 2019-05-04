@@ -1,0 +1,20 @@
+﻿@using WebUI.Helpers;
+
+
+<script src="~/Scripts/Views/vSeat.js"></script>
+<script src="~/Scripts/Controllers/cSeat.js"></script>
+
+@{
+      Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="row pull-right">
+    <div class="col-md-7">Seat edition</div>
+    <div class="col-md-5">
+        @Html.CtrlButton(viewName: "vSeat", id: "btnUpdate", label: "Update", onClickFunction: "SetInformation", buttonType: "info")
+    </div>
+</div>
+
+@Html.CtrlTable(viewName: "vSeat", id: "tblSeats", title: "Seats List",
+    columnsTitle: "ID,Seat number,Fly number,Seat class,Status", ColumnsDataName: "Id,SeatNumber,FlyNumber,SeatClass,Status", onSelectFunction: "BindFields")
+

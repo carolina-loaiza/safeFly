@@ -1,0 +1,68 @@
+﻿<script src="~/Scripts/Views/vCoin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    <!--El siguiente Layout se muestra en CADA VISTA, es el header donde aparecen las opciones de la pagina (parte azul)  -->
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<!-- tabla -  los controles crtl.. se definen con el objetivo de definir un estandar
+    en la arquitectura de como deben mostrarse los diferentes elementos y como deben
+    mostrarse (estandariza como se ve y comporta el sistema) -->
+<!-- CtrlTable recive en este caso: nombre de vsta, id (nosotros se lo asignamos, es el nombre que va a tener
+    la tabla), titulo de la tabla, tambien recibe los titulos
+    de las columnas ("Id,Name,LastName,Age""Id,Name,LastName,Age".
+    El ColumnsDataName es con que va a asociar a nivel de datos cada uno de los valores.
+    lo ultimo que recibe CtrlTable una funcion (BindFields) "onSelectFunction: "BindFields"
+
+    CtrlTable pinta en pantalla la lista con la informacion de la base de datos (listar) -->
+
+
+
+@*@Html.CtrlTable(viewName: "vCoin", id: "tblCoin", title: "Currency List", //ColumnsDataName se refiere  al nombre de las variables en el POJO
+    columnsTitle: "Currency ,Amount,Symbol,Status", ColumnsDataName: "CoinName,Amount,Symbol,Status", onSelectFunction: "BindFields")*@
+
+
+
+<!--
+    los botones llaman a funciones propias a los javascript de su vista (vCoin.js)
+    la clase "card border-secondary" esta predeterminada y viene de Bootstrap
+-->
+
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-header flex-row">
+        <div class="row">
+            <div class="col-md-8"><h5>Create Currency</h5></div>
+            <div class="col-md-4">
+
+                @Html.CtrlButton(viewName: "vCoin", id: "btnCreate", label: "Save", onClickFunction: "Create", buttonType: "success")
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtCoin", type: "text", label: "Currency Name", columnDataName: "CoinName")
+                                @Html.CtrlInput(id: "txtAmount", type: "number", label: "Amount", columnDataName: "Amount")
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtSymbol", type: "text", label: "Symbol", columnDataName: "Symbol")
+                                @Html.CtrlInput(id: "txtStatus", type: "text", label: "Status", columnDataName: "Status")
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

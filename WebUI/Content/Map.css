@@ -1,0 +1,14 @@
+﻿#map {
+    width: 700px;
+    height: 350px;
+    margin-left: 170px;
+}
+
+.marker {
+    background-image: url("https://img.icons8.com/ios/50/000000/airplane-landing-filled.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}

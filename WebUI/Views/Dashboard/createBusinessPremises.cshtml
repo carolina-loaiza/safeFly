@@ -1,0 +1,44 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vBusinessPremises.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-header flex-row">
+        <div class="row">
+            <div class="col-md-8"><h5>Step #1: Information of the business premises.</h5></div>
+            <div class="col-md-4">
+                @Html.CtrlButton(viewName: "vBusinessPremises", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtID", type: "text", label: "Id", columnDataName: "ID")
+                                @Html.CtrlInput(id: "txtAirportID", type: "text", label: "Id Airport", columnDataName: "AirportID")
+                                @Html.CtrlInput(id: "txtAlquilerAmount", type: "text", label: "Rental amount", columnDataName: "AlquilerAmount")
+                                @Html.CtrlInput(id: "txtDescription", type: "text", label: "Description", columnDataName: "Description")
+                                @Html.CtrlInput(id: "txtTenant", type: "text", label: "Tenant", columnDataName: "Tenant")
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtTenantID", type: "text", label: "Tenant id", columnDataName: "TenantID")
+                                @Html.CtrlInput(id: "txtPhone", type: "text", label: "Phone", columnDataName: "Phone")
+                                @Html.CtrlInput(id: "txtArea", type: "text", label: "Area", columnDataName: "Area")
+                                @Html.CtrlInput(id: "txtComerceNumber", type: "text", label: "Comerce number", columnDataName: "ComerceNumber")
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

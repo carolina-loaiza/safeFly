@@ -1,0 +1,55 @@
+﻿@using WebUI.Helpers;
+<script src="~/Scripts/Views/vApproveAirline.js"></script>
+@{
+    <!--El siguiente Layout se muestra en CADA VISTA, es el header donde aparecen las opciones de la pagina (parte azul)  -->
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*columnsTitle: nombre que le vamos a asignar a las columnas en la vista
+ColumnsDataName: al nombre de las variables en el POJO. *@
+
+@Html.CtrlTable(viewName: "vApproveAirline", id: "tblApproveAirline", title: "Airlines Pending Approval", //ColumnsDataName se refiere  
+                columnsTitle: "Airline ID ,Name, Business Name, Admin ID, Airline Email, Phone Number, Legal representative," +
+                  "Inscription Date, Approvement Status, Status", 
+                ColumnsDataName: "ID,Name,BusinessName,Admin,Email,PhoneNumber,RepresentantLegal,InscriptionDate,Approvement,Status",
+                onSelectFunction: "BindFields")
+
+
+<!--
+    los botones llaman a funciones propias a los javascript de su vista (vCoin.js)
+    la clase "card border-secondary" esta predeterminada y viene de Bootstrap
+-->
+<div class="card border-secondary" style="margin-top: 50px;">
+    <div class="card-header">
+        <div class="row pull-right">
+            <div class="col-md-8">Activate Airline</div>
+            <div class="col-md-4">
+
+                @Html.CtrlButton(viewName: "vApproveAirline", id: "btnUpdate", label: "Activate", onClickFunction: "Update", buttonType: "info")
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtID", type: "text", label: "Airline ID", columnDataName: "ID")
+                                
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtName", type: "text", label: "Name", columnDataName: "Name")
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

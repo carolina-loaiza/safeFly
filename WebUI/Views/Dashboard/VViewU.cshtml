@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "VView";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<script src="~/Scripts/Views/BaseClass.js"></script>
+<script src="~/Scripts/Views/VView.js"></script>
+<script>
+    $(document).ready(function () {
+
+        const vView = new VView();
+        vView.RetrieveAll();
+
+    });
+</script>
+<h2>Update View</h2>
+
+
+@Html.CtrlTable(viewName: "VView", id: "tblView", title: "User List",
+    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields" )
+
+
+
+<div class="card border-secondary" style="margin-top: 50px;">
+    <div class="card-header">
+        <div class="row pull-left">
+            <div class="col-md-12">View</div>
+            <div class="col-md-4">
+                @Html.CtrlButton("VView", "btnUpdate", "Save", "Update", "success")
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="bs-component">
+                    <form id="frmView">
+                        <div class="col-md-6">
+                            <span style="display: none; border: solid;">
+                                @Html.CtrlInput("ID", "text", "ID", columnDataName: "Id")
+                            </span>
+                            @Html.CtrlInput("Name", "text", "View name", columnDataName: "Name")
+                        </div>
+                        <div class="col-md-6">
+                            @Html.CtrlInput("Description", "text", "Descripion", columnDataName: "Description")
+                                @Html.CtrlInput("Status", "checkbox", "Active", columnDataName: "Status")
+                        </div>
+                        @*@Html.CtrlDropDown(id: "drpGender", label: "Gender", listId: "LST_GENERO")*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

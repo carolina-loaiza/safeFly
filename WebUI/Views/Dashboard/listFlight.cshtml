@@ -1,0 +1,46 @@
+﻿@using WebUI.Helpers;
+
+
+<script src="~/Scripts/Views/vFlight.js"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="row pull-right">
+    <div class="col-md-7">Flight edition</div>
+    <div class="col-md-5">
+        @*<a id="btnToUpdate" class="btn btn-info text-decoration-none" href="/Dashboard/createFlight">Update</a>*@
+        @Html.CtrlButton(viewName: "vFlight", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "info")
+    </div>
+</div>
+
+@Html.CtrlTable(viewName: "vFlight", id: "tblFlights", title: "Flights List",
+    columnsTitle: "Fly number,Seats quantify,First class seats,Business class seats,Economic class seats,Status", ColumnsDataName: "FlyNumber,SeatsQuantify,FirstClassSeats,BusinessClassSeats,EconomicClassSeats,Status", onSelectFunction: "BindFields")
+
+<form id="frmEdition">
+    <div class="row">
+        <div class="col-md-6">
+            <div hidden>
+                @Html.CtrlInput(id: "txtFlyNumber", type: "number", label: "Fly number", columnDataName: "FlyNumber")
+            </div>
+            @Html.CtrlInput(id: "txtSeatsQuantify", type: "number", label: "Seats quantify", columnDataName: "SeatsQuantify")
+            @Html.CtrlInput(id: "txtFirstClassSeats", type: "number", label: "First class seats", columnDataName: "FirstClassSeats")
+        </div>
+
+        <div class="col-md-6">
+            @Html.CtrlInput(id: "txtBusinessClassSeats", type: "number", label: "Business class seats", columnDataName: "BusinessClassSeats")
+            @Html.CtrlInput(id: "txtEconomicClassSeats", type: "number", label: "Economic class seats", columnDataName: "EconomicClassSeats")
+            <div hidden>
+                @Html.CtrlInput(id: "txtStatus", type: "text", label: "Status", columnDataName: "Status")
+            </div>
+
+            <select id="cmbStatus" class="form-control">
+                <option value="Atrasado">Atrasado</option>
+                <option value="Cancelado">Cancelado</option>
+                <option value="En curso">En curso</option>
+                <option value="A tiempo">A tiempo</option>
+            </select>
+        </div>
+    </div>
+</form>

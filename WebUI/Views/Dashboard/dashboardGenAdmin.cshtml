@@ -1,0 +1,58 @@
+﻿<script src="~/Scripts/Views/dashboardGenAdmin.js"></script>
+<link href="../theme/css/dashboard.css" rel="stylesheet">
+@{
+    <!--El siguiente Layout se muestra en CADA VISTA, es el header donde aparecen las opciones de la pagina (parte azul)  -->
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <h2>Total Counter Section</h2>
+    <p>Overall Data Information.</p>
+    <br>
+
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <p><i class="fa fa-plane"></i></p>
+                <h3 id="activeArlns">  50   </h3>
+                <p>Total Active Airlines</p>
+            </div>
+        </div>
+
+
+
+        <div class="column">
+            <div class="card">
+                <p><i class="fa fa-plane"></i></p>
+                <h3>55+</h3>
+                <p>Total Inactive Airlines</p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <p><i class="fa fa-building-o"></i></p>
+                <h3>100+</h3>
+                <p>Total Bussiness Premises</p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <p><i class="fa fa-dollar"></i></p>
+                <h3>100+</h3>
+                <p>Montly Bussiness Premises rental income</p>
+            </div>
+        </div>
+    </div>
+
+</body>
