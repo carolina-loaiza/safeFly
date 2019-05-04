@@ -1,0 +1,15 @@
+
+Log Entry : 12:12:33 AM Wednesday, May 1, 2019
+  :
+  :Exception of type 'Exceptions.BussinessException' was thrown.
+-------------------------------
+
+Log Entry : 12:13:00 AM Wednesday, May 1, 2019
+  :
+  :Exception of type 'Exceptions.BussinessException' was thrown.
+-------------------------------
+
+Log Entry : 12:13:27 AM Wednesday, May 1, 2019
+  :
+  :Exception of type 'Exceptions.BussinessException' was thrown.
+-------------------------------

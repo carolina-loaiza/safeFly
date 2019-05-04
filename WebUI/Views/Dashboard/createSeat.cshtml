@@ -1,0 +1,46 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vSeat.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-header flex-row">
+        <div class="row">
+            <div class="col-md-8">Step #1: Information of the seat</div>
+            <div class="col-md-4">
+                @Html.CtrlButton(viewName: "vSeat", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
+                <div hidden>
+                    @Html.CtrlButton(viewName: "vSeat", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "success")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtSeatNumber", type: "number", label: "Seat number", columnDataName: "SeatsNumber")
+                                @Html.CtrlInput(id: "txtFlyNumber", type: "number", label: "Fly number", columnDataName: "FlyNumber")
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtSeatClass", type: "text", label: "Seat Class", columnDataName: "SeatClass")
+                                @*@Html.CtrlInput(id: "txtStatus", type: "text", label: "Status", columnDataName: "Status")*@
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

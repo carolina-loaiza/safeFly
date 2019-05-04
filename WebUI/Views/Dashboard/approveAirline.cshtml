@@ -1,0 +1,26 @@
+﻿@using WebUI.Helpers;
+<script src="~/Scripts/Views/vApproveAirline.js"></script>
+@{
+    <!--El siguiente Layout se muestra en CADA VISTA, es el header donde aparecen las opciones de la pagina (parte azul)  -->
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List of Airlines pending approval</h1>
+    <div class="btn-block-custom container-spinner-button button-create-spinner">
+        @Html.CtrlButton(viewName: "vApproveAirline", id: "btnCreate", label: "Approve", onClickFunction: "Update", buttonType: "success")
+        <div class="justify-content-center container-spinner d-none" id="container-spinner">
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.CtrlTable(viewName: "vApproveAirline", id: "tblApproveAirline", title: "Select one to approve use in airport:", //ColumnsDataName se refiere
+                columnsTitle: "Airline ID ,Name, Business Name, Admin ID, Airline Email, Phone Number, Legal representative," +
+                  "Inscription Date, Approvement Status",
+                ColumnsDataName: "ID,Name,BusinessName,Admin,Email,PhoneNumber,RepresentantLegal,InscriptionDate,Approvement",
+                onSelectFunction: "")
+

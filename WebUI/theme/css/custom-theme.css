@@ -1,0 +1,180 @@
+﻿.bg-gradient-primary {
+    background-color: #16537D;
+    background-image: none;
+}
+
+.login-logo {
+    width: 230px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.btn-success,
+.btn-primary,
+.page-home hr.divider {
+    background-color: #3AD48D;
+    border-color: #3AD48D;
+}
+
+.dashboard-logo img,
+.login-logo img,
+.card-header button,
+.card-body button,
+form .btn-success {
+    width: 100% !important;
+}
+
+.bg-register-image,
+.bg-login-image {
+    background: url("https://source.unsplash.com/600x800/?travel");
+    background-position: center;
+    background-size: cover;
+}
+
+
+.btn-block-custom button {
+    display: block;
+    width: 100%;
+}
+
+.border-left-primary {
+    border-left: .25rem solid #248ad0 !important;
+}
+
+
+.dashboard-logo {
+    margin: 20px;
+}
+
+header.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 72px);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(66, 81, 92, 0.8)), to(rgba(66, 81, 92, 0.8))), url("https://source.unsplash.com/1900x1267/?travel");
+    background: linear-gradient(to bottom, rgba(66, 81, 92, 0.8) 0%, rgba(66, 81, 92, 0.8) 100%), url("https://source.unsplash.com/1900x1267/?travel");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.page-home #mainNav .navbar-nav .nav-item .nav-link.active {
+    color: #3AD48D !important;
+}
+
+.page-home .bg-primary {
+    background-color: #16537D !important;
+}
+
+.page-home .bg-contact {
+    background: #eae9e9;
+}
+
+.page-home-logo {
+    display: inline-block;
+    width: 122px;
+}
+
+    .page-home-logo img {
+        width: 100%;
+    }
+
+.page-home #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link:hover,
+#services .text-primary,
+.page-home .bg-contact a {
+    color: #3AD48D !important;
+}
+
+.page-home .masthead .h-100 {
+    height: 85% !important;
+}
+
+@media (min-width: 992px) {
+    header.masthead {
+        height: 86vh;
+        min-height: 36rem;
+    }
+}
+
+.error_input {
+    border: 2px solid #eb4d4b;
+}
+
+.disable-form input {
+    pointer-events: none;
+    border: 0px;
+    border-bottom: 1px solid #d1d3e2;
+    background-color: white;
+    border-radius: 0;
+}
+
+.hidden-input {
+    display: none
+}
+
+.container-createAirline {
+    max-width: 800px;
+    margin: 7rem auto !important;
+}
+
+    .container-createAirline .btn-link {
+        color: #3AD48D !important;
+    }
+
+    .container-createAirline .jumbotron {
+        background-color: #3AD48D !important;
+        color: #fff;
+    }
+
+        .container-createAirline .jumbotron h1 {
+            font-size: 2rem;
+        }
+
+        .container-createAirline .jumbotron .lead {
+            font-size: 1.1rem;
+        }
+
+
+.container-spinner-button {
+    position: relative;
+}
+
+.container-spinner {
+    position: absolute;
+    top: 5px;
+    right: 32%;
+    height: 7px;
+}
+
+.spinner-border {
+    height: 24px;
+    width: 24px;
+}
+
+.button-create-spinner {
+    width: 200px;
+}
+
+.button-create-spinner .container-spinner {
+    right: 17%;
+}
+
+.card-body button.btn-table-custom {
+    width: 200px !important;
+}
+
+table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
+    background-color: #0d639c2b !important;
+}
+
+.btn-info {
+    background-color: #15537d;
+    border-color: #15537d;
+}
+
+.sidebar {
+    width: 22rem !important;
+}
+
+    .sidebar .nav-item .nav-link {
+        width: 100%;
+    }

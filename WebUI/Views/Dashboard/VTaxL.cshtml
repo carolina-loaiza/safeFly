@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "VRole";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<script src="~/Scripts/Views/BaseClass.js"></script>
+<script src="~/Scripts/Views/VTax.js"></script>
+<script>$(document).ready(function () {
+
+        const vRol = new VTax();
+        vRol.RetrieveAll();
+    });</script>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List of taxes</h1>
+</div>
+
+@Html.CtrlTable(viewName: "VTax", id: "tblTax", title: "Select a tax to:",
+    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields")

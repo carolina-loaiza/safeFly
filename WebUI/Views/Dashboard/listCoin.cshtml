@@ -1,0 +1,16 @@
+﻿<script src="~/Scripts/Views/vCoin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List of currencies</h1>
+</div>
+
+@Html.CtrlTable(viewName: "vCoin", id: "tblCoin", title: "Select an currency to:", //ColumnsDataName se refiere  al nombre de las variables en el POJO
+    columnsTitle: "Currency Name,Amount,Symbol,Status", ColumnsDataName: "CoinName,Amount,Symbol,Status", onSelectFunction: "BindFields")
+
+
+

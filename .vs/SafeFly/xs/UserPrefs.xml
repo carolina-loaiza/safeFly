@@ -1,0 +1,73 @@
+﻿<Properties StartupConfiguration="Multiple Projects">
+  <MonoDevelop.Ide.ItemProperties.5-UI.WebUI PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebUI/Scripts/Views/vAirport.js">
+    <Files>
+      <File FileName="WebUI/Scripts/Views/vAirport.js" Line="45" Column="60" />
+      <File FileName="WebAPI/Controllers/AirportController.cs" Line="72" Column="28" />
+      <File FileName="Exceptions/ExceptionManager.cs" Line="46" Column="14" />
+      <File FileName="WebUI/Scripts/Views/vAirline.js" Line="134" Column="60" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SafeFly" expanded="True">
+            <Node name="2-DataAccess" expanded="True">
+              <Node name="DataAccess" expanded="True">
+                <Node name="Crud" expanded="True" />
+                <Node name="Mapper" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="3-Exceptions" expanded="True">
+              <Node name="Exceptions" expanded="True" />
+            </Node>
+            <Node name="4-API" expanded="True">
+              <Node name="CoreAPI" expanded="True" />
+              <Node name="WebAPI" expanded="True">
+                <Node name="Controllers" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="5-UI" expanded="True">
+              <Node name="WebUI" expanded="True">
+                <Node name="Controllers" expanded="True" />
+                <Node name="Models" expanded="True">
+                  <Node name="Controls" expanded="True" />
+                </Node>
+                <Node name="Scripts" expanded="True">
+                  <Node name="Views" expanded="True">
+                    <Node name="vAirport.js" selected="True" />
+                  </Node>
+                </Node>
+                <Node name="theme" expanded="True">
+                  <Node name="css" expanded="True" />
+                </Node>
+                <Node name="Views" expanded="True">
+                  <Node name="Dashboard" expanded="True" />
+                  <Node name="Shared" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../Exceptions/ExceptionManager.cs" line="45" offsetX="426" offsetY="792" expression="ex.Message" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.4-API.WebAPI PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/macbook/Downloads/SafeFly_Solution0002/WebAPI/Controllers/GatesController.cs" relfile="WebAPI/Controllers/GatesController.cs" line="36" column="1" />
+      <Breakpoint file="/Users/macbook/Downloads/SafeFly_Solution0002/Exceptions/ExceptionManager.cs" relfile="Exceptions/ExceptionManager.cs" line="45" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Multiple Projects" Name="Multiple Projects">
+      <Items>
+        <StartupItem ItemId="{5B02BB42-9CD8-4383-B293-27585D36F556}" ItemName="WebAPI" />
+        <StartupItem ItemId="{4C72EB35-085D-4A29-A24F-75A7862AA751}" ItemName="WebUI" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+</Properties>

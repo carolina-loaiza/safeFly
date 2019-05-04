@@ -1,0 +1,49 @@
+﻿@using WebUI.Helpers;
+<script src="~/Scripts/Views/vCreateAdminAirport.js"></script>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.CtrlTable(viewName: "vCreateAdminAirport", id: "tblCreateAdminAirport", title: "Airport Administrator List",
+    columnsTitle: "Identification,First Name,Second Name,Last Name1,Last Name2,Email,Birth Date,Phone Number,Status,Airport", ColumnsDataName: "ID,FirstName,SecondName,LastName1,LastName2,Email,BirthDate,PhoneNumber,Status,NameAirport", onSelectFunction: "BindFields")
+
+
+<div class="card border-secondary" style="margin-top: 50px;">
+    <div class="card-header">
+        <div class="row pull-right">
+            <div class="col-md-8">Edit Airport Administrator Information</div>
+            <div class="col-md-4">
+                @Html.CtrlButton(viewName: "vCreateAdminAirport", id: "btnCreate", label: "Save", onClickFunction: "Create", buttonType: "success")
+                @Html.CtrlButton(viewName: "vCreateAdminAirport", id: "btnUpdate", label: "Save changes", onClickFunction: "Update", buttonType: "info")
+                @Html.CtrlButton(viewName: "vCreateAdminAirport", id: "btnDelete", label: "Delete", onClickFunction: "Delete", buttonType: "danger")
+            </div>
+        </div>
+    </div>
+
+
+<div class="card-body">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bs-component">
+                <form id="frmEdition">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.CtrlInput(id: "txtID", type: "text", label: "Identification", columnDataName: "ID")
+                            @Html.CtrlInput(id: "txtFirstName", type: "text", label: "First Name", columnDataName: "FirstName")
+                            @Html.CtrlInput(id: "txtSecondName", type: "text", label: "Second Name", columnDataName: "SecondName")
+                            @Html.CtrlInput(id: "txtLastName1", type: "text", label: "Last Name1", columnDataName: "LastName1")
+                            @Html.CtrlInput(id: "txtLastName2", type: "text", label: "Last Name2", columnDataName: "LastName2")
+                        </div>
+                        <div class="col-md-6">
+                            @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                            @Html.CtrlInput(id: "txtBirthDate", type: "date", label: "Birth Date", columnDataName: "BirthDate")
+                            @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                            @Html.CtrlInput(id: "txtStatus", type: "text", label: "Status", columnDataName: "Status")
+                            @Html.CtrlInput(id: "txtAirport", type: "text", label: "Airport", columnDataName: "NameAirport")
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

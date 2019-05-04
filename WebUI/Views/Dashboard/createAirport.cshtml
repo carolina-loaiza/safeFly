@@ -1,0 +1,70 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vAirport.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+<script src="~/Scripts/Views/Mapa.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet" />
+<link href="~/Content/Map.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Adding a new Airport</h1>
+    <div class="btn-block-custom container-spinner-button button-create-spinner">
+        @Html.CtrlButton(viewName: "vAirport", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
+        <div class="justify-content-center container-spinner d-none" id="container-spinner">
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="txtAdministrator">Administrator</label>
+                                    </div>
+                                    <select class="custom-select" name="txtAdministrator" id="txtAdministrator" columnDataName="Administrator">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtLegalNumber", type: "text", label: "Legal number", columnDataName: "LegalNumber")
+                                @Html.CtrlInput(id: "txtNameAirport", type: "text", label: "Airport name", columnDataName: "NameAirport")
+                                @Html.CtrlInput(id: "txtBusinessName", type: "text", label: "Business name", columnDataName: "BusinessName")
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                                @Html.CtrlInput(id: "txtRepresentative", type: "text", label: "Representative Name", columnDataName: "Representative")
+                                @Html.CtrlInput(id: "txtRepresentativeID", type: "number", label: "Identification number of Representative", columnDataName: "RepresentativeID")
+                            </div>
+                            @*<div class="col-md-4">
+            @Html.CtrlButton(viewName: "vAirport", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
+            @Html.CtrlButton(viewName: "vAirport", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "success")
+        </div>*@
+                            <div hidden>
+                                @Html.CtrlInput(id: "txtLatitude", type: "text", label: "Latitude", columnDataName: "Latitude")
+                                @Html.CtrlInput(id: "txtLongitude", type: "text", label: "Longitude", columnDataName: "Longitude")
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-center">Select the location of the airport:</h4>
+        <div id="map" style="margin: 0 auto;"></div>
+    </div>
+</div>
+

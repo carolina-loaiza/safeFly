@@ -1,0 +1,5 @@
+
+Log Entry : 8:11:07 PM Monday, April 29, 2019
+  :
+  :Exception of type 'Exceptions.BussinessException' was thrown.
+-------------------------------

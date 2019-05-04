@@ -1,0 +1,15 @@
+﻿@using WebUI.Helpers;
+
+<script src="~/Scripts/Views/vAirport.js"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List of airports</h1>
+</div>
+
+@Html.CtrlTable(viewName: "vAirport", id: "tblAirports", title: "Select an airport to:",
+    columnsTitle: "Legal number,Airport name,Business name,Administrator,Email,Representative,Status", ColumnsDataName: "LegalNumber,NameAirport,BusinessName,Administrator,Email,Representative,Estado", onSelectFunction: "BindFields")

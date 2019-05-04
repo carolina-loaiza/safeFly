@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SafeFly</title>
+
+    <!-- Font Awesome Icons -->
+    <link href="../theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="../theme/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="../theme/css/creative.min.css" rel="stylesheet">
+    <link href="../theme/css/custom-theme.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/Views/ControlActions.js"></script>
+    <script src="~/Scripts/Views/vUser.js"></script>
+    <script src="~/Scripts/Views/vPassword.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+
+<body id="page-top" class="page-home bg-gradient-primary">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger page-home-logo" href="#page-top">
+                <img src="../theme/image/logo.png" alt="SafeFly" />
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">Work with us!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/Register/user">Sign up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/Home/#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/Home/#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/LogIn/user">Log in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-createAirline mt-5">
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Application for airline use in airports.</h1>
+                <p class="lead mt-5">Fill out the form with the information solicited and we will send the application to the airports administrator for approval.</p>
+            </div>
+        </div>
+
+        <div class="accordion" id="accordionExample">
+            <div class="card border-left-primary shadow h-100 ">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button id="collapseOne-button" class="btn btn-link text-left text-decoration-none font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Step #1: Enter Information of the administrator of the airline.
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <form id="frmEdition">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtID", type: "text", label: "Identification number", columnDataName: "ID")
+                                </div>
+                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtFirstName", type: "text", label: "First Name", columnDataName: "FirstName")
+                                </div>
+                                <div class="col-sm-4 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtSecondName", type: "text", label: "Second Name", columnDataName: "SecondName")
+                                </div>
+                                <div class="col-sm-4 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtLastName1", type: "text", label: "Last Name", columnDataName: "LastName1")
+                                </div>
+                                <div class="col-sm-4 mb-12 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtLastName2", type: "text", label: "Second Last Name", columnDataName: "LastName2")
+                                </div>
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                                </div>
+                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtBirthDate", type: "date", label: "Birthdate", columnDataName: "BirthDate")
+                                </div>
+                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                                </div>
+                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtPassword", type: "password", label: "Password", columnDataName: "Password")
+                                </div>
+                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                    @Html.CtrlInput(id: "txtConfirmPass", type: "password", label: "Confirm Password", columnDataName: "Confirm")
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                @Html.CtrlButton(viewName: "vAirline", id: "btnCreate", label: "Next", onClickFunction: "CreateUser", buttonType: "success")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-left-primary shadow h-100 ">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button id="collapseTwo-button" class="btn btn-link collapsed text-left text-decoration-none font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Step #2: Enter Information of the airline.
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <form id="formAirline">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="d-none" type="text" id="txtID" ColumnDataName="ID">
+                                    @Html.CtrlInput(id: "txtName", type: "text", label: "Name", columnDataName: "Name")
+                                    @Html.CtrlInput(id: "txtBusinessName", type: "text", label: "Business Name", columnDataName: "BusinessName")
+                                    @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                                    <input type="hidden" class="form-control" name="txtAdmin" id="txtAdmin" ColumnDataName="Admin">
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                                    @Html.CtrlInput(id: "txtRepresentantLegal", type: "text", label: "Representant Legal", columnDataName: "RepresentantLegal")
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                @Html.CtrlButton(viewName: "vAirline", id: "btnCreateAirline", label: "Next", onClickFunction: "CreateAirline", buttonType: "success")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-left-primary shadow h-100 ">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button id="collapseThree-button" class="btn btn-link collapsed text-left text-decoration-none font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Step #3: Select the airports.
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <form id="formSolicitude">
+                            <div class="row" id="airportListContainer">
+
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-sm-6 mt-5">
+                                @Html.CtrlButton(viewName: "vAirline", id: "btnCreateSolicitude", label: "Send solicitude", onClickFunction: "CreateSolicitude", buttonType: "success")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../theme/vendor/jquery/jquery.min.js"></script>
+    <script src="../theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../theme/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../theme/js/creative.min.js"></script>
+    <script src="~/Scripts/Views/vAirline.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "VView";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<script src="~/Scripts/Views/BaseClass.js"></script>
+<script src="~/Scripts/Views/VView.js"></script>
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Adding a new view</h1>
+    <div class="btn-block-custom container-spinner-button button-create-spinner">
+        @Html.CtrlButton("VView", "btnCreate", "Save", "Create", "success")
+        <div class="justify-content-center container-spinner d-none" id="container-spinner">
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmTax">
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                @Html.CtrlInput("Name", "text", "View name", columnDataName: "Name")
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput("Description", "text", "Descripion", columnDataName: "Description")
+                            </div>
+                            @*@Html.CtrlDropDown(id: "drpGender", label: "Gender", listId: "LST_GENERO")*@
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

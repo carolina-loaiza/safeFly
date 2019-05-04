@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Register SafeFly</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../theme/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../theme/css/custom-theme.css" rel="stylesheet">
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/Views/ControlActions.js"></script>
+    <script src="~/Scripts/Views/vUser.js"></script>
+    <script src="~/Scripts/Views/vPassword.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center login-logo">
+                                <img src="../theme/image/logo.png" alt="SafeFly" />
+                            </div>
+                            <div>
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account</h1>
+                            </div>
+                            <form class="user" id="frmEdition">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtID", type: "text", label: "Identification number", columnDataName: "ID")
+                                    </div>
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtFirstName", type: "text", label: "First Name", columnDataName: "FirstName")
+                                    </div>
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtSecondName", type: "text", label: "Second Name", columnDataName: "SecondName")
+                                    </div>
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtLastName1", type: "text", label: "Last Name", columnDataName: "LastName1")
+                                    </div>
+                                    <div class="col-sm-12 mb-12 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtLastName2", type: "text", label: "Second Last Name", columnDataName: "LastName2")
+                                    </div>
+                                    <div class="col-sm-12 mb-12 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                                    </div>
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtBirthDate", type: "date", label: "Birthdate", columnDataName: "BirthDate")
+                                    </div>
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                                    </div>
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtPassword", type: "password", label: "Password", columnDataName: "Password")
+                                    </div>
+                                    <div class="col-sm-6 mb-6 mb-sm-0">
+                                        @Html.CtrlInput(id: "txtConfirmPass", type: "password", label: "Confirm Password", columnDataName: "Confirm")
+                                    </div>
+                                </div>
+                                <div class="btn-block-custom container-spinner-button">
+                                    @Html.CtrlButton(viewName: "vUser", id: "btnCreate", label: "Register", onClickFunction: "Create", buttonType: "success")
+                                    <div class="justify-content-center container-spinner d-none" id="container-spinner">
+                                        <div class="spinner-border text-light" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr>
+                            <div class="text-center ">
+                                @Html.ActionLink("Have an account already?, Log In!", "user", "LogIn", null, new { @class = "small" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../theme/vendor/jquery/jquery.min.js"></script>
+    <script src="../theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../theme/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

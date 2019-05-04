@@ -1,0 +1,61 @@
+﻿<script src="~/Scripts/Views/contactUs.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    <!--El siguiente Layout se muestra en CADA VISTA, es el header donde aparecen las opciones de la pagina (parte azul)  -->
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container contact">
+
+        <div class="col-md-9">
+            <div class="contact-form">
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h2>  Contact Us</h2>
+                        <h4>  We would love to hear from you !</h4>
+                        <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+                    </div>
+
+
+                </div>
+                <form id="frmEdition">
+                    <div class="form-group">
+                       
+                        <div class="col-sm-10">
+                            @Html.CtrlInput(id: "txtFirstName", type: "text", label: "First Name", columnDataName: "FirstName")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            @Html.CtrlInput(id: "txtLastName", type: "text", label: "Last Name", columnDataName: "LastName")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            @Html.CtrlInput(id: "txtComment", type: "textarea", label: "Comment", columnDataName: "Comment")
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            @Html.CtrlButton(viewName: "contactUs", id: "btnCorreo", label: "Submit", onClickFunction: "Create", buttonType: "success")
+                        </div>
+                    </div>
+</div>
+

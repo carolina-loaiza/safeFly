@@ -1,0 +1,45 @@
+﻿<script src="~/Scripts/Views/vCoin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    <!--El siguiente Layout se muestra en CADA VISTA, es el header donde aparecen las opciones de la pagina (parte azul)  -->
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Adding a new currency</h1>
+    <div class="btn-block-custom container-spinner-button button-create-spinner">
+        @Html.CtrlButton(viewName: "vCoin", id: "btnCreate", label: "Save", onClickFunction: "Create", buttonType: "success")
+        <div class="justify-content-center container-spinner d-none" id="container-spinner">
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEdition">
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.CtrlInput(id: "txtCoin", type: "text", label: "Currency Name", columnDataName: "CoinName")
+                            </div>
+                            <div class="col-md-4">
+                                @Html.CtrlInput(id: "txtAmount", type: "number", label: "Amount", columnDataName: "Amount")
+                            </div>
+                            <div class="col-md-4">
+                                @Html.CtrlInput(id: "txtSymbol", type: "text", label: "Symbol", columnDataName: "Symbol")
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

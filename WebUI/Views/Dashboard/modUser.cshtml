@@ -1,0 +1,43 @@
+﻿<script src="~/Scripts/Views/vUser.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Profile</h1>
+    @Html.CtrlButton(viewName: "vUser", id: "btnShowForm", label: "Edit porfile", onClickFunction: "ShowForm", buttonType: "info")
+</div>
+
+<div class="card border-left-primary shadow h-100">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                    <form id="frmEditionProfile" class="disable-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtID", type: "text", label: "Identification number", columnDataName: "ID")
+                                @Html.CtrlInput(id: "txtFirstName", type: "text", label: "First Name", columnDataName: "FirstName")
+                                @Html.CtrlInput(id: "txtSecondName", type: "text", label: "Second Name", columnDataName: "SecondName")
+                                @Html.CtrlInput(id: "txtLastName1", type: "text", label: "Last Name", columnDataName: "LastName1")
+                            </div>
+                            <div class="col-md-6">
+                                @Html.CtrlInput(id: "txtLastName2", type: "text", label: "Second Last Name", columnDataName: "LastName2")
+                                @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                                @Html.CtrlInput(id: "txtBirthDate", type: "date", label: "Birth Date", columnDataName: "BirthDate")
+                                @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row d-none" id="btnUpdate-profile">
+            <div class="col-4">
+                @Html.CtrlButton(viewName: "vUser", id: "btnUpdate", label: "Save", onClickFunction: "Update", buttonType: "info")
+            </div>
+        </div>
+    </div>
+</div>

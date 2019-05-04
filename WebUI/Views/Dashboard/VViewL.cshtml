@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "VRole";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<script src="~/Scripts/Views/BaseClass.js"></script>
+<script src="~/Scripts/Views/VView.js"></script>
+
+<script>$(document).ready(function () {
+
+        const vRol = new VView();
+        vRol.RetrieveAll();
+    });</script>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List of views</h1>
+</div>
+
+
+@Html.CtrlTable(viewName: "VView", id: "tblView", title: "Select a view to:",
+    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields")

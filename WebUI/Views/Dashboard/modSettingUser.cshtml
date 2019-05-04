@@ -1,0 +1,50 @@
+<script src="~/Scripts/Views/vUser.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Settings</h1>
+</div>
+
+<div class="card mb-4 border-left-primary shadow h-100">
+    <div class="card-header">
+        <div class="row pull-left">
+            <div class="col-md-4">
+                Enable / Disable profile settings
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12 mb-4">
+                <div class="bs-component">
+                    <form id="frmEditionProfile">
+                        @Html.CtrlInput("Chatbot", "checkbox", "Chatbot", columnDataName: "Chatbot")
+                        @Html.CtrlInput("SMSNotification", "checkbox", "SMS Notification", columnDataName: "SMSNotification")
+                        @Html.CtrlInput("EmailNotification", "checkbox", "Email Notification", columnDataName: "EmailNotification")
+                        <div class="hidden-input">
+                            @Html.CtrlInput(id: "txtID", type: "text", label: "Identification number", columnDataName: "ID")
+                            @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.CtrlButton(viewName: "vUser", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "info")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4 py-3 border-left-danger">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                @Html.CtrlButton(viewName: "vUser", id: "btnUpdateStatus", label: "Delete Account", onClickFunction: "Delete", buttonType: "danger")
+            </div>
+        </div>
+    </div>
+</div>
