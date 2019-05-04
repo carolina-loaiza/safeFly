@@ -35,12 +35,6 @@ namespace DataAccess.Mapper
             operation.AddVarcharParam(DB_COL_EMAIL, c.Email);
             operation.AddVarcharParam(DB_COL_BIRTHDATE, c.BirthDate.ToString());
             operation.AddVarcharParam(DB_COL_PHONENUMBER, c.PhoneNumber);
-          //  operation.AddVarcharParam(DB_COL_STATUS, c.Status);
-         //  operation.AddVarcharParam(DB_COL_NAMEAIRPORT, c.NameAirport);
-
-         //   operation.AddBolParam(DB_COL_CHATBOT, true);
-         //   operation.AddBolParam(DB_COL_SMSNOTIFICATION, true);
-          //  operation.AddBolParam(DB_COL_EMAILNOTIFICATION, true);
 
             return operation;
         }
@@ -59,6 +53,18 @@ namespace DataAccess.Mapper
         public SqlOperation GetRetriveAllStatement()
         {
             var operation = new SqlOperation { ProcedureName = "RET_ALL_AIRPORTADMIN_PR" };
+            return operation;
+        }
+        
+        public SqlOperation GetAllAirportAdminStatement()
+        {
+            var operation = new SqlOperation { ProcedureName = "RET_ALL_AIRPORTADMIN_USER_PR" };
+            return operation;
+        }
+        
+        public SqlOperation GetRetriveAllStatementWithoutAirport()
+        {
+            var operation = new SqlOperation { ProcedureName = "RET_ALL_AIRPORTADMIN_WITHOUT_AIRPORT_PR" };
             return operation;
         }
 

@@ -74,7 +74,6 @@ namespace WebAPI.Controllers
                 //welcome email
                 EnviarCorreo(user);
 
-                return Ok(apiResp);
             }
             catch (BussinessException bex)
             {

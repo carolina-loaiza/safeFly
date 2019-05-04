@@ -12,9 +12,9 @@
 }
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Adding a new Airport</h1>
+    <h1 class="h3 mb-0 text-gray-800">Modify Airport</h1>
     <div class="btn-block-custom container-spinner-button button-create-spinner">
-        @Html.CtrlButton(viewName: "vAirport", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
+        @Html.CtrlButton(viewName: "vAirport", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "success")
         <div class="justify-content-center container-spinner d-none" id="container-spinner">
             <div class="spinner-border text-light" role="status">
                 <span class="sr-only">Loading...</span>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bs-component">
-                    <form id="frmEdition">
+                    <form id="frmEditionModify">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-group mb-3">
@@ -50,10 +50,6 @@
                                 @Html.CtrlInput(id: "txtRepresentative", type: "text", label: "Representative Name", columnDataName: "Representative")
                                 @Html.CtrlInput(id: "txtRepresentativeID", type: "number", label: "Identification number of Representative", columnDataName: "RepresentativeID")
                             </div>
-                            @*<div class="col-md-4">
-            @Html.CtrlButton(viewName: "vAirport", id: "btnCreate", label: "Create", onClickFunction: "Create", buttonType: "success")
-            @Html.CtrlButton(viewName: "vAirport", id: "btnUpdate", label: "Update", onClickFunction: "Update", buttonType: "success")
-        </div>*@
                             <div hidden>
                                 @Html.CtrlInput(id: "txtLatitude", type: "text", label: "Latitude", columnDataName: "Latitude")
                                 @Html.CtrlInput(id: "txtLongitude", type: "text", label: "Longitude", columnDataName: "Longitude")

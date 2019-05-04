@@ -29,6 +29,29 @@ namespace WebAPI.Controllers
 
             return Ok(apiResp);
         }
+        
+        [HttpGet]
+        [Route("api/AirportAdmin/withoutAirport")]
+        public IHttpActionResult GetAllWithoutAirport()
+        {
+
+            apiResp = new ApiResponse();
+            var mng = new AirportAdminManager();
+            apiResp.Data = mng.RetrieveAllWithoutAirport();
+
+            return Ok(apiResp);
+        }
+        
+        [HttpGet]
+        [Route("api/AirportAdmin/all")]
+        public IHttpActionResult GetAllAirportAdmin()
+        {
+            apiResp = new ApiResponse();
+            var mng = new AirportAdminManager();
+            apiResp.Data = mng.RetrieveAllAirportAdmin();
+
+            return Ok(apiResp);
+        }
 
         // GET api/user/5
         // Retrieve by id
@@ -64,6 +87,10 @@ namespace WebAPI.Controllers
 
                 var mng = new AirportAdminManager();
                 mng.Create(admon);
+                
+                var mngpass = new PasswordManager();
+                DateTime ExpirationDate = DateTime.Today;
+                mngpass.Create(admon.Email, admon.Password, ExpirationDate.AddYears(5), "Activo");
 
                 apiResp = new ApiResponse();
                 apiResp.Message = "Action was executed.";

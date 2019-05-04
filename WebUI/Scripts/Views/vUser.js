@@ -8,7 +8,7 @@
     this.service = 'user';
     this.serviceActivate = "user/Activar";
     this.ctrlActions = new ControlActions();
-    this.columns = "ID,FirstName,SecondName,LastName1,LastName2,Email,BirthDate,PhoneNumber,Status";
+    this.columns = "ID,FirstName,SecondName,LastName1,LastName2,Email,BirthDate,PhoneNumber,Password,Confirm";
 
     this.RetrieveAll = function () {
         this.ctrlActions.FillTable(this.service, this.tblUsersId, false);
@@ -19,43 +19,54 @@
     }
 
     this.Create = function () {
-        var userData = {};
-        userData = this.ctrlActions.GetDataForm('frmEdition');
-
-
-
-        if (userData.Password != userData.Confirm || userData.Password == '' || userData.Confirm == '' ) {
+        var userData = this.ctrlActions.GetDataForm('frmEdition');
+        if (!userData) {
+            return false;
+        }
+        if (userData.Password != userData.Confirm ) {
 
             inputClave.classList.add('is-invalid');
             inputConfirma.classList.add('is-invalid');
 
             Swal.fire({
-                title: 'Password Confirmation ',
-                text: 'Please check if Password or Confirmation matches or if any of them are in blank',
+                title: 'An error has occurred',
+                text: 'Passwords doesn\'t match. Please check the information and try again.',
                 type: 'warning',
-                confirmButtonText: 'Entendido'
+                confirmButtonText: 'OK'
             });
-
-
         } else {
-
-
             inputClave.classList.remove('is-invalid');
             inputConfirma.classList.remove('is-invalid');
-
-            //Hace el post al create
-            this.ctrlActions.PostToAPI(this.service, userData);
-
-            Swal.fire({
-                title: 'Registro completo',
-                text: 'El usuario se registró correctamente',
-                type: 'success',
-                confirmButtonText: 'Entendido'
-            });
-            //Refresca la tabla
-            this.ReloadTable();
+            $('#container-spinner').removeClass('d-none');
+              
+            var CtrlActions = this.ctrlActions;
+            $.post(this.ctrlActions.GetUrlApiService(this.service), userData, function (response) {
+                Swal.fire({
+                    title: 'Thanks for joining SafeFly!',
+                    text: 'We will send you a welcome email, now you can Log In with your email and password.',
+                    type: 'success',
+                    confirmButtonText: 'Ok'
+                  }).then((result) => {
+                          window.location.href = '/LogIn/user';
+                  });
+                  
+                   CtrlActions.PostToAPI("userxrolexview", {
+                        "UserId": userData.ID,
+                        "RoleId": 1,
+                        "ViewId": 4
+                   });
+            
+            }).fail(function (response) {
+                 var data = response.responseJSON;
+                 $('#container-spinner').addClass('d-none');
+                   Swal.fire({
+                        title: 'An error has occurred',
+                        text: 'Please check the information and try again.',
+                       type: 'error',
+                        confirmButtonText: 'OK'
+                   });
+             })
         }
-
     }
 
     this.Update = function () {
@@ -128,8 +139,6 @@
         this.ReloadTable();
 
     }
-
-
 
     this.BindFields = function () {
         if ($('#frmEditionProfile').length) {

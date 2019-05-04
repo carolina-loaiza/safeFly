@@ -2,20 +2,19 @@
     ViewBag.Title = "VRole";
     Layout = "~/Views/Shared/_LayoutTheme.cshtml";
 }
-<script>
-    $(document).ready(function () {
+<script>$(document).ready(function () {
 
         const vRol = new VRole();
         vRol.RetrieveAll();
         vRol.DataBind();
-    });
-</script>
+    });</script>
 <script src="~/Scripts/Views/BaseClass.js"></script>
 <script src="~/Scripts/Views/VRole.js"></script>
 
-<h2>Role List</h2>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List of roles</h1>
+</div>
 
-
-@Html.CtrlTable(viewName: "VRole", id: "tblRole", title: "User List",
-    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields" )
+@Html.CtrlTable(viewName: "VRole", id: "tblRole", title: "Select a rol to:",
+    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields")
 

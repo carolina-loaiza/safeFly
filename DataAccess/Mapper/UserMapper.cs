@@ -22,7 +22,7 @@ namespace DataAccess.Mapper
 
         public SqlOperation GetCreateStatement(BaseEntity entity)
         {
-            var operation = new SqlOperation { ProcedureName = "CRE_USER_PR" };
+            var operation = new SqlOperation { ProcedureName = "CRE_USER_WITHOUT_ROLE_PR" };
 
             var c = (User)entity;
             operation.AddVarcharParam(DB_COL_ID, c.ID);
@@ -33,10 +33,6 @@ namespace DataAccess.Mapper
             operation.AddVarcharParam(DB_COL_EMAIL, c.Email);
             operation.AddVarcharParam(DB_COL_BIRTHDATE, c.BirthDate.ToString());
             operation.AddVarcharParam(DB_COL_PHONENUMBER, c.PhoneNumber);
-           // operation.AddVarcharParam(DB_COL_STATUS, c.Status);
-           // operation.AddVarcharParam(DB_COL_CHATBOT, c.Chatbot);
-           // operation.AddVarcharParam(DB_COL_SMSNOTIFICATION, c.SMSNotification);
-           // operation.AddVarcharParam(DB_COL_EMAILNOTIFICATION, c.EmailNotification);
 
             return operation;
         }

@@ -2,7 +2,6 @@
     ViewBag.Title = "Home";
 }
 <script src="~/Scripts/Views/vIndex.js"></script>
-@*@Html.CtrlChart("vIndex", "myChart", "Millenials customers", "'Millenials','Other generations'", "bar", onLoadFunction: "GetDataToChart")*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +45,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">Sign up</a>
+                        <a class="nav-link js-scroll-trigger" href="#about">Work with us!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/Register/user">Sign up</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#services">Services</a>
@@ -83,8 +85,8 @@
                 <div class="col-lg-8 text-center">
                     <h2 class="text-white mt-0">We've got what you need!</h2>
                     <hr class="divider light my-4">
-                    <p class="text-white-50 mb-4">Sign up in and access all the advantages of SafeFly</p>
-                    <a class="btn btn-light btn-xl js-scroll-trigger" href="/Register/user">Get Started!</a>
+                    <p class="text-white-50 mb-4">Are you an airline company and want to work with SafeFly airports ?</p>
+                    <a class="btn btn-light btn-xl js-scroll-trigger" href="/Dashboard/createAirline">Get Started!</a>
                 </div>
             </div>
         </div>

@@ -2,25 +2,26 @@
        var userName = $('#dashboard-user_name');
        var user = JSON.parse(sessionStorage.getItem("user"));
        var linksMenu = [];
+       var ctrlActions = new ControlActions();
        
         if (!user || !user.FirstName) {
              window.location.href = '/';
         }
        userName.append(user.FirstName + ' ' + user.LastName1 + ' ' +user.LastName2 );
-       
-       
+
+        
         switch(user.RolName) {
           case "Registered Final User":
-             linksMenu = ['listAirport', 'createAirline'];
+             linksMenu = ['listAirport'];
             break;
           case "AdminAeropuerto":
-            linksMenu = ['listAirport', 'listBusinessPremises', 'createBusinessPremises', 'approveAirline'];
+            linksMenu = ['listAirline','modifyAirport', 'listBusinessPremises', 'createBusinessPremises', 'approveAirline'];
             break;
           case "AdminAerolinea":
-            linksMenu = ['listAirline', 'modifyAirline'];
+            linksMenu = ['listAirport','modifyAirline'];
             break;
           case "SysAdmin":
-            linksMenu = ['createAirport', 'createCoin', 'listCoin','VPermiseC', 'VPermiseU','VPermiseL', 'VTaxC','VTaxU', 'VTaxL','VViewC', 'VViewU', 'VViewL'];
+            linksMenu = ['listAdminAirport','listAirline','createAdminAirport','createAirport', 'listAirport','createCoin', 'listCoin','VPermiseC', 'VPermiseU','VPermiseL', 'VTaxC','VTaxU', 'VTaxL','VViewC', 'VViewU', 'VViewL'];
             break;
           default:
              linksMenu = [];

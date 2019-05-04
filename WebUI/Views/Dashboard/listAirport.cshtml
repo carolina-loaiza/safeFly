@@ -1,22 +1,15 @@
 ﻿@using WebUI.Helpers;
 
-<script src="~/Scripts/Views/airports.js"></script>
 <script src="~/Scripts/Views/vAirport.js"></script>
-
 
 @{
     Layout = "~/Views/Shared/_LayoutTheme.cshtml";
 }
 
-<div class="row pull-right">
-    <div class="col-md-7">Airport edition</div>
-    <div class="col-md-5">
-        @*<a id="btnToUpdate" class="btn btn-info text-decoration-none" href="/Dashboard/createAirport">Update</a>*@
-        @Html.CtrlButton(viewName: "vAirport", id: "btnUpdate", label: "Update", onClickFunction: "SetInformation", buttonType: "info")
-        @Html.CtrlButton(viewName: "vAirport", id: "btnDelete", label: "Desactivate", onClickFunction: "Delete", buttonType: "danger")
-        @Html.CtrlButton(viewName: "vAirport", id: "btnActivar", label: "Activate", onClickFunction: "Activar", buttonType: "success")
-    </div>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List of airports</h1>
 </div>
 
-@Html.CtrlTable(viewName: "vAirport", id: "tblAirports", title: "Airports List",
-    columnsTitle: "Legal number,Airport name,Business name,Id administrator,Email,Representative,Id Representative,Status", ColumnsDataName: "LegalNumber,NameAirport,BusinessName,Administrator,Email,Representative,RepresentativeID,Estado", onSelectFunction: "BindFields")
+@Html.CtrlTable(viewName: "vAirport", id: "tblAirports", title: "Select an airport to:",
+    columnsTitle: "Legal number,Airport name,Business name,Administrator,Email,Representative,Status", ColumnsDataName: "LegalNumber,NameAirport,BusinessName,Administrator,Email,Representative,Estado", onSelectFunction: "BindFields")

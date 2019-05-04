@@ -75,3 +75,39 @@ namespace DataAccess.Crud
         }
     }
 }
+
+        public List<T> RetrieveAllWithoutAirport<T>()
+        {
+            var lstUsers = new List<T>();
+
+            var lstResult = dao.ExecuteQueryProcedure(mapper.GetRetriveAllStatementWithoutAirport());
+            var dic = new Dictionary<string, object>();
+            if (lstResult.Count > 0)
+            {
+                var objs = userMapper.BuildObjects(lstResult);
+                foreach (var c in objs)
+                {
+                    lstUsers.Add((T)Convert.ChangeType(c, typeof(T)));
+                }
+            }
+
+            return lstUsers;
+        }
+        
+        public List<T> RetrieveAllAirportAdmin<T>()
+        {
+            var lstUsers = new List<T>();
+
+            var lstResult = dao.ExecuteQueryProcedure(mapper.GetAllAirportAdminStatement());
+            var dic = new Dictionary<string, object>();
+            if (lstResult.Count > 0)
+            {
+                var objs = mapper.BuildObjects(lstResult);
+                foreach (var c in objs)
+                {
+                    lstUsers.Add((T)Convert.ChangeType(c, typeof(T)));
+                }
+            }
+
+            return lstUsers;
+        }

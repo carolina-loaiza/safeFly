@@ -1,6 +1,6 @@
 ﻿function ControlActions() {
 
-    this.URL_API = "http://localhost:55614/api/";  //WebAPI
+    this.URL_API = "http://localhost:8081/api/";  //WebAPI
 
     this.GetUrlApiService = function (service) {
         return this.URL_API + service;
@@ -12,7 +12,27 @@
         return val;
     }
 
-    this.FillTable = function (service, tableId, refresh) {
+    this.FillTable = function (service, tableId, refresh, linkModify) {
+            var buttonTables = [{
+                        text: 'Reload',
+                        className: 'btn btn-secondary btn-table-custom',
+                        action: function ( e, dt, node, config ) {
+                            dt.ajax.reload();
+                        }
+                    }];
+                    
+        if (linkModify) {
+               var ModifyButton = {
+                        text: 'Modify',
+                        className: 'btn btn-info btn-table-custom',
+                        action: function ( e, dt, node, config ) {
+                            if (sessionStorage.getItem(tableId+'_selected')) {
+                                window.location.href = linkModify;
+                            }
+                        }
+                    }
+               buttonTables.push(ModifyButton);
+        }
 
         if (!refresh) {
             columns = this.GetTableColumsDataName(tableId).split(',');
@@ -24,8 +44,9 @@
                 obj.data = value;
                 arrayColumnsData.push(obj);
             });
-
-            $('#' + tableId).DataTable({
+            
+            var TABLE = $('#' + tableId).DataTable({
+                "destroy": true,
                 "processing": true,
                 "ajax": {
                     "url": this.GetUrlApiService(service),
@@ -40,13 +61,27 @@
                         return json.Data;
                     }
                 },
-                "columns": arrayColumnsData
+                "columns": arrayColumnsData,
+                "dom": 'Bfrtip',
+                "buttons": buttonTables,
+                "select": true
+            });
+            
+            
+            $('#'+tableId+' tbody').on('click', 'tr', function () {
+                var data = TABLE.row(this).data();
+                var index= tableId+'_selected';
+                sessionStorage.setItem(index, JSON.stringify(data));
             });
         } else {
             //RECARGA LA TABLA
             $('#' + tableId).DataTable().ajax.reload();
         }
-
+        
+       var listButtonTable = document.querySelectorAll("button.btn-table-custom");
+       listButtonTable.forEach(function(item) {
+             item.classList.remove("dt-button");
+       });
     }
 
     this.GetSelectedRow = function () {
@@ -56,10 +91,9 @@
     };
 
     this.BindFields = function (formId, data) {
-        console.log(data);
         $('#' + formId + ' *').filter(':input').each(function (input) {
             var columnDataName = $(this).attr("ColumnDataName");
-            if (data[columnDataName] && data[columnDataName].indexOf("T00:00:00") !== -1) {
+            if (data[columnDataName] && typeof data[columnDataName] == "string" && data[columnDataName].indexOf("T00:00:00") !== -1) {
                 this.value = data[columnDataName].substring(0, data[columnDataName].indexOf('T'));
             } else {
                 this.value = data[columnDataName];
@@ -69,10 +103,12 @@
 
     this.GetDataForm = function (formId) {
         var data = {};
-
+        
         $('#' + formId + ' *').filter(':input').each(function (input) {
             var columnDataName = $(this).attr("ColumnDataName");
-            data[columnDataName] = this.value;
+            if (columnDataName){
+                data[columnDataName] = this.value;
+              }
         });
         let valid=true;
         let fun=(str,matches)=>{for (let i=0;i<matches.length;i++){
@@ -82,14 +118,19 @@
         }};
         let frm=document.querySelector(`#${formId}`);
         for (let key in data) {
-            if (fun(key, ['id', 'mail', 'name']) && data[key] === '') {
-                console.log(`${key} is empty`);
+            if (data[key] === '') {
                 valid = false;
                 frm.querySelector(`[ColumnDataName=${key}]`).classList.add('is-invalid');
             } else {
+                frm.querySelector(`[ColumnDataName=${key}]`).classList.remove('is-invalid');
                 if (fun(key,['mail'])) {
                     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     valid= re.test(data[key].toLowerCase());
+                    if (!valid) {
+                           frm.querySelector(`[ColumnDataName=Email]`).classList.add('is-invalid');
+                    } else {
+                        frm.querySelector(`[ColumnDataName=Email]`).classList.remove('is-invalid');
+                    }
                 }
             }
         }
@@ -114,8 +155,7 @@
     };
 
     this.PostToAPI = function (service, data) {
-
-        var jqxhr = $.post(this.GetUrlApiService(service), data, function (response) {
+         var jqxhr = $.post(this.GetUrlApiService(service), data, function (response) {
             var ctrlActions = new ControlActions();
             ctrlActions.ShowMessage('I', response.Message);
         })
@@ -139,6 +179,7 @@
                 console.log(data);
             })
 	};
+
 
     this.DeleteToAPI = function (service, data) {
         var jqxhr = $.delete(this.GetUrlApiService(service), data, function (response) {
@@ -168,49 +209,6 @@
             })
     };
 
-    this.LogInToAPI = function (service, data) {
-
-        var array = [];
-        for (var prop in data) {
-            array.push(data[prop]);
-        }
-        var email = array[0];
-        var password = array[1];
-        var jqxhr = $.login(this.GetUrlApiService(service), email, password, function (response) {
-            var ctrlActions = new ControlActions();
-            ctrlActions.ShowMessage('I', response.Message);
-            var log = new vLogIn();
-            log.ValidateCredentials(array,true);
-        })
-            .fail(function (response) {
-                var data = response.responseJSON;
-                var ctrlActions = new ControlActions();
-                ctrlActions.ShowMessage('E', data.ExceptionMessage);
-                var log = new vLogIn();
-                log.ValidateCredentials(array, false);
-            })
-	};
-
-    this.EmailToAPI = function (service, data) {
-
-        var array = [];
-        for (var prop in data) {
-            array.push(data[prop]);
-        }
-        var email = array[0];
-        var jqxhr = $.email(this.GetUrlApiService(service), email, function (response) {
-            var ctrlActions = new ControlActions();
-            ctrlActions.ShowMessage('I', response.Message);
-            var log = new vLogIn();
-            log.UserSession(response);
-        })
-            .fail(function (response) {
-                var data = response.responseJSON;
-                var ctrlActions = new ControlActions();
-                ctrlActions.ShowMessage('E', data.ExceptionMessage);
-            })
-    };
-
 	this.GetToApi = function (service, callbackFunction) {
 		var jqxhr = $.get(this.GetUrlApiService(service), function (response) {
 			console.log("Response " + response);
@@ -218,27 +216,8 @@
 		});
 	}
 
-    this.GetToSelect = function (service, callback) {
-        var array = []
 
-        var jqxhr = $.get(this.GetUrlApiService(service), function (response) {
-            var ctrlActions = new ControlActions();
-            ctrlActions.ShowMessage('I', response.Message);
-            var info = [];
-            for (var prop in response) {
-                info.push(response[prop]);
-            }
-            callback(info, true);
-        })
-            .fail(function (response) {
-                var data = response.responseJSON;
-                var ctrlActions = new ControlActions();
-                ctrlActions.ShowMessage('E', data.ExceptionMessage);
-
-                callback([], false);
-            })
-    };
-};
+	};
 
 //Custom jquery actions
 $.login = function (url, email, password, callback) {
@@ -345,18 +324,3 @@ $.sendemail = function (url, data, callback) {
 		contentType: 'application/json'
 	});
 }
-
-//$.get = function (url, callback) {
-//    if ($.isFunction(data)) {
-//        type = type || callback,
-//            callback = data,
-//            data = {}
-//    }
-//    return $.ajax({
-//        url: url,
-//        type: 'Get',
-//        success: callback,
-//        data: JSON.stringify(data),
-//        contentType: 'application/json'
-//    });
-//}

@@ -1,9 +1,0 @@
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\bin\Debug\Exceptions.dll
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\bin\Debug\Exceptions.pdb
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\bin\Debug\Entities-POJO.dll
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\bin\Debug\Entities-POJO.pdb
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\obj\Debug\Exceptions.csprojAssemblyReference.cache
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\obj\Debug\Exceptions.csproj.CoreCompileInputs.cache
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\obj\Debug\Exceptions.csproj.CopyComplete
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\obj\Debug\Exceptions.dll
-C:\Users\Proto-2\Source\Workspaces\SafeFly2\Develop\SafeFly_Solution\Exceptions\obj\Debug\Exceptions.pdb

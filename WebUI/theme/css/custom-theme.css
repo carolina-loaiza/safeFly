@@ -100,13 +100,81 @@ header.masthead {
 }
 
 .disable-form input {
-        pointer-events: none;
-        border: 0px;
-        border-bottom: 1px solid #d1d3e2;
-        background-color: white;
-        border-radius: 0;
+    pointer-events: none;
+    border: 0px;
+    border-bottom: 1px solid #d1d3e2;
+    background-color: white;
+    border-radius: 0;
 }
 
 .hidden-input {
     display: none
 }
+
+.container-createAirline {
+    max-width: 800px;
+    margin: 7rem auto !important;
+}
+
+    .container-createAirline .btn-link {
+        color: #3AD48D !important;
+    }
+
+    .container-createAirline .jumbotron {
+        background-color: #3AD48D !important;
+        color: #fff;
+    }
+
+        .container-createAirline .jumbotron h1 {
+            font-size: 2rem;
+        }
+
+        .container-createAirline .jumbotron .lead {
+            font-size: 1.1rem;
+        }
+
+
+.container-spinner-button {
+    position: relative;
+}
+
+.container-spinner {
+    position: absolute;
+    top: 5px;
+    right: 32%;
+    height: 7px;
+}
+
+.spinner-border {
+    height: 24px;
+    width: 24px;
+}
+
+.button-create-spinner {
+    width: 200px;
+}
+
+.button-create-spinner .container-spinner {
+    right: 17%;
+}
+
+.card-body button.btn-table-custom {
+    width: 200px !important;
+}
+
+table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
+    background-color: #0d639c2b !important;
+}
+
+.btn-info {
+    background-color: #15537d;
+    border-color: #15537d;
+}
+
+.sidebar {
+    width: 22rem !important;
+}
+
+    .sidebar .nav-item .nav-link {
+        width: 100%;
+    }

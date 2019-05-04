@@ -40,6 +40,47 @@ namespace WebAPI.Controllers
                 return InternalServerError(new Exception(ex.ExceptionId + "-" + ex.AppMessage.Message));
             }
         }
+        
+        [HttpGet]
+        [Route("api/Airline/ByAdminID/{adminID}")]
+       public IHttpActionResult GetByAdminID(string adminID)
+        {
+            try
+            {
+                var mng = new AirlineManagement();
+                var airline = new Airline
+                {
+                    Admin = adminID
+                };
+                airline = mng.RetrieveByAdminID(airline);
+                apiResp = new ApiResponse();
+                apiResp.Message = "Informacion solicitada:";
+                apiResp.Data = airline; 
+                return Ok(apiResp);
+            }
+            catch (BussinessException ex)
+            {
+                return InternalServerError(new Exception(ex.ExceptionId + "-" + ex.AppMessage.Message));
+            }
+        }
+        
+        [HttpGet]
+        [Route("api/Airline/AllApproval/{AirportId}/{Approvement}")]
+       public IHttpActionResult GetByApproval(string AirportId, string Approvement)
+        {
+            try
+            {
+                var mng = new AirlineManagement();
+                apiResp = new ApiResponse();
+                apiResp.Message = "Informacion solicitada:";
+                apiResp.Data = mng.RetrieveAllApproval(Approvement, AirportId); 
+                return Ok(apiResp);
+            }
+            catch (BussinessException ex)
+            {
+                return InternalServerError(new Exception(ex.ExceptionId + "-" + ex.AppMessage.Message));
+            }
+        }
 
         public IHttpActionResult Post(Airline tmpAirline)
         {

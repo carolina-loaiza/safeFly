@@ -5,11 +5,12 @@
      * @param {String} tbl Id de la tabla en la cual se desea mostrar datos
      * @param {String} form Id del formulario del cual se van a llenar o van a recuperar los datos
      */
-    constructor(service, tbl, form) {
+    constructor(service, tbl, form, redirect) {
         this.ctrlActions = new ControlActions();
         this.service = service;
         this._tbl = tbl;
         this._form = form;
+        this._redirect = redirect;
     }
 
     get form() {
@@ -86,7 +87,7 @@
      * Puebla la tabla con la informacion recuperada del servicio
      */
     RetrieveAll() {
-        this.ctrlActions.FillTable(this.service, this._tbl, false);
+        this.ctrlActions.FillTable(this.service, this._tbl, false, this._redirect);
     }
 
     /**

@@ -7,32 +7,25 @@
     el '#-#Id-' funciona como tag de reemplazo para decirle cual tabla debe hacer, seria el id
     y tiene como valor de Id: (ejemplo) '#tblCustomers' proveniente de vCustomers.cshtml
  -->
-<script>
-    $(document).ready(function () {
+<script>$(document).ready(function () {
         var table = $('#-#Id-').DataTable();
-
         //el siguiente codigo agrega un eventoClic y se parametriza en OnSelect (evento)
         $('#-#Id- tbody').on('click', 'tr', function () {
+            console.log(this);
+            console.log(table.row(this));
             var data = table.row(this).data();
-            sessionStorage.setItem('-#Id-_selected', data);
-            console.log(data);
+            sessionStorage.setItem('-#Id-_selected', JSON.stringify(data));
 
-            //hace una instancia de viewName quien es un tag de reemplazo viene de vCustomers.cshtml
-            // data vendria a ser el registro que fue seleccionado en la tabla cuando se le da clic
-            //vCustomers esta definido en la carpeta Scripts, View: vCustomers.js (esta clase se llama igual
-            //a como se llama la vista)
             var view = new -#ViewName-();
             if (view != undefined) {
-                view.-#FunctionName-(data);
-              //  view.BindFields - (data);
+                //view.-#FunctionName-(data);
+                view.BindFields-(data);
             }
         });
-    });
-</script>
+    });</script>
 
 
-
-<div class="card shadow mb-4">
+<div class="card border-left-primary shadow h-100">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">-#Title-</h6>
     </div>

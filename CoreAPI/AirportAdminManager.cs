@@ -85,3 +85,12 @@ namespace CoreAPI
         }
     }
 }
+
+        public List<Administrator> RetrieveAllAirportAdmin()
+        {
+            return crudAirportAdmin.RetrieveAllAirportAdmin<Administrator>();
+        }
+        public List<User> RetrieveAllWithoutAirport()
+        {
+            return crudAirportAdmin.RetrieveAllWithoutAirport<User>();
+        }

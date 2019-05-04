@@ -46,7 +46,7 @@
                                 <img src="../theme/image/logo.png" alt="SafeFly" />
                             </div>
                             <div>
-                                <h1 class="h4 text-gray-900 mb-4">Create account</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account</h1>
                             </div>
                             <form class="user" id="frmEdition">
                                 <div class="form-group row">
@@ -81,13 +81,18 @@
                                         @Html.CtrlInput(id: "txtConfirmPass", type: "password", label: "Confirm Password", columnDataName: "Confirm")
                                     </div>
                                 </div>
-                                <div class="btn-block-custom">
+                                <div class="btn-block-custom container-spinner-button">
                                     @Html.CtrlButton(viewName: "vUser", id: "btnCreate", label: "Register", onClickFunction: "Create", buttonType: "success")
+                                    <div class="justify-content-center container-spinner d-none" id="container-spinner">
+                                        <div class="spinner-border text-light" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                             <hr>
                             <div class="text-center ">
-                                @Html.ActionLink("Have an account already, Log In!", "user", "LogIn", null, new { @class = "small" })
+                                @Html.ActionLink("Have an account already?, Log In!", "user", "LogIn", null, new { @class = "small" })
                             </div>
                         </div>
                     </div>

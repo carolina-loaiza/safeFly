@@ -6,30 +6,25 @@
     $(document).ready(function () {
 
         const vRol = new VRole();
-        vRol.RetrieveAll();
-        vRol.DataBind();
+        vRol.BindFields();
     });
 </script>
 <script src="~/Scripts/Views/BaseClass.js"></script>
 <script src="~/Scripts/Views/VRole.js"></script>
 
-<h2>Update Role</h2>
-
-
-@Html.CtrlTable(viewName: "VRole", id: "tblRole", title: "User List",
-    columnsTitle: "Nombre,Descripcion", ColumnsDataName: "Name,Description", onSelectFunction: "BindFields" )
-
-
-
-<div class="card border-secondary" style="margin-top: 50px;">
-    <div class="card-header">
-        <div class="row pull-left">
-            <div class="col-md-12"></div>
-            <div class="col-md-4">
-                @Html.CtrlButton("VRole", "btnUpdate", "Save", "Update", "success")
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Modify Rol</h1>
+    <div class="btn-block-custom container-spinner-button button-create-spinner">
+        @Html.CtrlButton("VRole", "btnUpdate", "Save", "Update", "success")
+        <div class="justify-content-center container-spinner d-none" id="container-spinner">
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
     </div>
+</div>
+
+<div class="card border-left-primary shadow h-100">
     <div class="card-body">
         <div class="row">
             <div class="col-lg-12">

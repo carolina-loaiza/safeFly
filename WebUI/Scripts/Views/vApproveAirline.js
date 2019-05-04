@@ -3,53 +3,42 @@ function vApproveAirline() {
 
 	//todo lo que esta aqui rige para la vista de vCoin
 
-	this.tblApproveAirlineId = 'tblApproveAirline';
-	this.service = 'approveAirline';  
+	var tblApproveAirlineId = 'tblApproveAirline';
+	var service = 'Airline/AllApproval/airportID/Inactivo';  
 	this.ctrlActions = new ControlActions();
 	this.columns = "ID,Name,BusinessName,Admin,Email,PhoneNumber,RepresentantLegal,InscriptionDate,Approvement,Status";
+    var userLogin = JSON.parse(sessionStorage.getItem("user"));
+    var CtrlActions = new ControlActions();
 
 
 	this.RetrieveAll = function () {
-		this.ctrlActions.FillTable(this.service, this.tblApproveAirlineId, false);
-	}
-
-	this.ReloadTable = function () {
-		this.ctrlActions.FillTable(this.service, this.tblApproveAirlineId, true);
-	}
-
-	this.Create = function () {
-		var approvalAirlineData = {};
-		approvalAirlineData = this.ctrlActions.GetDataForm('frmEdition');
-		//Hace el post al create
-		this.ctrlActions.PostToAPI(this.service, approvalAirlineData);
-		//Refresca la tabla
-		this.ReloadTable();
-	}
-
+       $.get(this.ctrlActions.GetUrlApiService('Airport/ByAdminID/'+userLogin.ID), function (response) {     
+             service = service.replace(/airportID/i, response.Data.LegalNumber);
+            CtrlActions.FillTable(service, tblApproveAirlineId, false, false); 
+        })
+     }
+    
 	this.Update = function () {
 
-		var approvalAirlineData = {};
-		approvalAirlineData = this.ctrlActions.GetDataForm('frmEdition');
-		//Hace el post al create
-		this.ctrlActions.PutToAPI(this.service, approvalAirlineData);
-		//Refresca la tabla
-		this.ReloadTable();
-
-	}
-
-	this.Delete = function () {
-
-		var approvalAirlineData = {};
-		approvalAirlineData = this.ctrlActions.GetDataForm('frmEdition');
-		//Hace el post al create
-		this.ctrlActions.DeleteToAPI(this.service, approvalAirlineData);
-		//Refresca la tabla
-		this.ReloadTable();
-
-	}
-
-	this.BindFields = function (data) {
-		this.ctrlActions.BindFields('frmEdition', data);
+		var approvalAirlineData = JSON.parse(sessionStorage.getItem('tblApproveAirline_selected'));
+        $.put(this.ctrlActions.GetUrlApiService('approveAirline'), approvalAirlineData, function (response) {            
+            Swal.fire({
+                title: 'Airline approved! ',
+               type: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+             }).then((result) => {
+                   window.location.href = '/Dashboard/listAirline';
+              })
+        })
+        .fail(function (response) {
+               Swal.fire({
+                    title: 'An error has occurred',
+                    text: 'Please check the information and try again.',
+                   type: 'error',
+                    confirmButtonText: 'OK'
+               });
+         })
 	}
 }
 

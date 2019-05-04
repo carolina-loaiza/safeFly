@@ -28,8 +28,8 @@ function airports() {
     }
 
     this.BindFields = function (data) {
-        document.getElementById('btnCreate').style.visibility = 'hidden';
-        document.getElementById('btnUpdate').style.visibility = 'hidden';
+        //document.getElementById('btnCreate').style.visibility = 'hidden';
+        //document.getElementById('btnUpdate').style.visibility = 'hidden';
         this.ctrlActions.BindFields('frmEdition', data);
     }
 

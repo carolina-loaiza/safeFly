@@ -20,7 +20,7 @@ namespace DataAccess.Mapper
 
         public SqlOperation GetCreateStatement(BaseEntity entity)
         {
-            var operation = new SqlOperation { ProcedureName = "CRE_AIRLINES_PR"};
+            var operation = new SqlOperation { ProcedureName = "CRE_AIRLINEsS_PR"};
 
             var a = (Airline)entity;
             
@@ -32,9 +32,6 @@ namespace DataAccess.Mapper
                 operation.AddVarcharParam(BD_COL_PhoneNumber, a.PhoneNumber);
                 operation.AddVarcharParam(BD_COL_RepresentantLegal, a.RepresentantLegal);
                 operation.AddVarcharParam(BD_COL_InscriptionDate, a.InscriptionDate.ToString());
-                operation.AddVarcharParam(BD_COL_UrlLogo, a.UrlLogo);
-                operation.AddVarcharParam(BD_COL_Approvement, a.Approvement);
-                operation.AddVarcharParam(BD_COL_Status, a.Status);
 
             return operation;
         }
@@ -42,6 +39,16 @@ namespace DataAccess.Mapper
         public SqlOperation GetRetriveAllStatement()
         {
             var operation = new SqlOperation { ProcedureName = "RET_ALL_AIRLINES_PR" };
+
+            return operation;
+        }
+        
+        public SqlOperation GetRetriveAllApprovalStatement(string Approvement, string AirportId)
+        {   
+
+            var operation = new SqlOperation { ProcedureName = "RET_ALL_AIRLINE_APPROVAL_BY_AIRPORT_PR" };
+            operation.AddVarcharParam(BD_COL_Approvement, Approvement);
+            operation.AddVarcharParam("AirportId", AirportId);
 
             return operation;
         }
@@ -53,6 +60,17 @@ namespace DataAccess.Mapper
             var a = (Airline)entity;
 
             operation.AddVarcharParam(BD_COL_ID, a.ID);
+
+            return operation;
+        }
+        
+        public SqlOperation GetRetriveByAdminIDStatement(BaseEntity entity)
+        {
+            var operation = new SqlOperation { ProcedureName = "RET_AIRLINE_BY_ADMINID_PR" };
+
+            var a = (Airline)entity;
+
+            operation.AddVarcharParam(BD_COL_Admin, a.Admin);
 
             return operation;
         }

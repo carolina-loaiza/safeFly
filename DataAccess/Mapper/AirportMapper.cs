@@ -46,6 +46,16 @@ namespace DataAccess.Mapper
 
             return operation;
         }
+        
+        public SqlOperation GetRetriveAllApprovalStatement(string Approvement, string AirlineID)
+        {   
+
+            var operation = new SqlOperation { ProcedureName = "RET_ALL_AIRPORT_APPROVAL_BY_AIRLINE_PR" };
+            operation.AddVarcharParam("Approvement", Approvement);
+            operation.AddVarcharParam("AirlineID", AirlineID);
+
+            return operation;
+        }
 
         public SqlOperation GetRetriveStatement(BaseEntity entity)
         {
@@ -54,6 +64,17 @@ namespace DataAccess.Mapper
             var a = (Airport)entity;
 
             operation.AddVarcharParam(BD_COL_LegalNumber, a.LegalNumber);
+
+            return operation;
+        }
+        
+        public SqlOperation GetRetriveByAdminIDStatement(BaseEntity entity)
+        {
+            var operation = new SqlOperation { ProcedureName = "RET_AIRPORT_BY_ADMINID_PR" };
+
+            var a = (Airport)entity;
+
+            operation.AddVarcharParam(BD_COL_Admin, a.Administrator);
 
             return operation;
         }

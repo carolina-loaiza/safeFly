@@ -2,61 +2,19 @@
 
 function vLogIn() {
 
-    this.service = 'user/LogIn';
-    this.serviceEmail = 'user/GetEmail';
-    this.ctrlActions = new ControlActions();
+    var service = 'user/LogIn';
+    var serviceEmail = 'user/GetEmail';
+    var ctrlActions = new ControlActions();
     this.columns = "UserID,Keyword"
     let email = document.querySelector('#txtEmail');
     let password = document.querySelector('#txtPassword');
 
-    this.SendCredentials = function () {
-
-        var userData = {};
-        userData = this.ctrlActions.GetDataForm('frmEdition');
-        //Hace el envia para inicio de sesion
-        this.ctrlActions.LogInToAPI(this.service, userData);
-        this.ctrlActions.EmailToAPI(this.serviceEmail, userData);
-    }
-
-    this.UserSession = function (userData) {
-        var array = [];
-        for (var prop in userData) {
-            array.push(userData[prop]);
-        }
-        sessionStorage.setItem('user', JSON.stringify(userData));
-        this.Views(array)
-    }
-
-    this.ValidateCredentials = function (userData, acesso) {
-
-        if (this.ValidarInputs() != true) {
-            if (userData != null && acesso == true) {
-                sessionStorage.setItem('userEmail', userData[0]);
-                sessionStorage.setItem('userPassword', userData[1]);
-                Swal.fire({
-                    title: 'Welcome!',
-                    text: 'Log in successful.',
-                    type: 'success',
-                    confirmButtonText: 'OK'
-                });
-            }
-        } else {
-            Swal.fire({
-                title: 'Error',
-                text: 'Please check the inputs.',
-                type: 'error',
-                confirmButtonText: 'OK'
-            });
-            this.LimpiarFormulario();
-        }
-    }
-
-    this.LimpiarFormulario = function(){
+    var LimpiarFormulario = function(){
         email.value = '';
         password.value = '';
     }
 
-    this.ValidarInputs = function(){
+    var ValidarInputs = function(){
         let error = false;
 
         if (email.value == '') {
@@ -75,13 +33,47 @@ function vLogIn() {
         return error;
     }
 
-    this.Views = function (array) {
-        var rol = array[12];
-        
-        if (rol != null) {
+    var Views = function (data) {
+       if (data.RolName != null) {
             window.location.href = '/Dashboard/user';
         } else {
              window.location.href = '/';
         }
+    }
+    
+    this.SendCredentials = function () {
+        ValidarInputs();
+        $('#container-spinner').removeClass('d-none');
+        var userData = ctrlActions.GetDataForm('frmEdition');
+        
+        if (!userData) { 
+             $('#container-spinner').addClass('d-none');
+             return false;
+        }
+       
+       $.login(ctrlActions.GetUrlApiService(service), userData.UserID, userData.Keyword, function (response) {
+             $.email(ctrlActions.GetUrlApiService(serviceEmail), userData.UserID, function (response) {
+                    sessionStorage.setItem('user', JSON.stringify(response));
+                    Views(response);
+            })
+           .fail(function (response) {
+                 $('#container-spinner').addClass('d-none');
+                Swal.fire({
+                    title: 'An error has occurred',
+                    text: 'Please check the information and try again.',
+                   type: 'error',
+                    confirmButtonText: 'OK'
+               });
+            })     
+       })
+       .fail(function (response) {
+              $('#container-spinner').addClass('d-none');
+              Swal.fire({
+                    title: 'An error has occurred',
+                    text: 'Please check the information and try again.',
+                   type: 'error',
+                    confirmButtonText: 'OK'
+               });
+       })
     }
 }

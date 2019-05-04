@@ -22,16 +22,6 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult listSchedule()
-        {
-            return View();
-        }
-
-        public ActionResult createSchedule()
-        {
-            return View();
-        }
-
         public ActionResult modifyAirline()
         {
             return View();
@@ -143,11 +133,60 @@ namespace WebUI.Controllers
         {
             return View();
         }
-
-        public ActionResult dashboardGenAdmin()
+        
+        public ActionResult createAdminAirport()
+        {
+            return View();
+        }
+        
+        public ActionResult modifyAirport()
+        {
+            return View();
+        }
+        
+        public ActionResult modifyCoin()
+        {
+            return View();
+        }
+        
+       public ActionResult listAdminAirport()
         {
             return View();
         }
 
     }
 }
+        public ActionResult listSchedule()
+        {
+            return View();
+        }
+
+        public ActionResult createSchedule()
+        {
+            return View();
+        }
+
+        public ActionResult modifyAirline()
+        {
+            return View();
+        }
+
+        public ActionResult listFlight()
+        {
+            return View();
+        }
+
+        public ActionResult createFlight()
+        {
+            return View();
+        }
+
+        public ActionResult listSeat()
+        {
+            return View();
+        }
+
+        public ActionResult createSeat()
+        {
+            return View();
+        }

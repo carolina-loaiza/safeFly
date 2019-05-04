@@ -19,6 +19,8 @@
     <link href="../theme/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="../theme/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../theme/css/custom-theme.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript-->
     <script src="../theme/vendor/jquery/jquery.min.js"></script>
@@ -29,9 +31,13 @@
     <script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="/theme/js/sb-admin-2.min.js"></script>
-    
+
     <script src="~/Scripts/Views/ControlActions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -68,10 +74,17 @@
                 </a>
             </li>
 
+            <li class="nav-item d-none" id="link-listAdminAirport">
+                <a class="nav-link" href="/Dashboard/listAdminAirport">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Administrator of Airports List</span>
+                </a>
+            </li>
+
             <li class="nav-item d-none" id="link-modifyAirline">
                 <a class="nav-link" href="/Dashboard/modifyAirline">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Modify Airline</span>
+                    <span>Modify Airline Information</span>
                 </a>
             </li>
 
@@ -82,59 +95,45 @@
                 </a>
             </li>
 
+            <li class="nav-item d-none" id="link-createAdminAirport">
+                <a class="nav-link" href="/Dashboard/createAdminAirport">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Create new administrator of airport</span>
+                </a>
+            </li>
+
             <li class="nav-item d-none" id="link-createAirport">
                 <a class="nav-link" href="/Dashboard/createAirport">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Create Airport</span>
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Create new Airport</span>
                 </a>
             </li>
 
             <li class="nav-item d-none" id="link-listAirport">
                 <a class="nav-link" href="/Dashboard/listAirport">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>List of airports</span>
+                    <span>Airports List</span>
                 </a>
             </li>
 
-            <li class="nav-item d-none" id="link-createSeat">
-                <a class="nav-link" href="/Dashboard/createSeat">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Create Seat</span>
-                </a>
-            </li>
-
-            <li class="nav-item d-none" id="link-listSeat">
-                <a class="nav-link" href="/Dashboard/listSeat">
+            <li class="nav-item d-none" id="link-modifyAirport">
+                <a class="nav-link" href="/Dashboard/modifyAirport">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>List of seats</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="link-createSchedule">
-                <a class="nav-link" href="/Dashboard/createSchedule">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Create Schedule</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="link-listSchedule">
-                <a class="nav-link" href="/Dashboard/listSchedule">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>List of schedules</span>
+                    <span>Modify Airport Information</span>
                 </a>
             </li>
 
             <li class="nav-item d-none" id="link-createBusinessPremises">
                 <a class="nav-link" href="/Dashboard/createBusinessPremises">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Create Business Premises</span>
+                    <span>Create new Business Premises</span>
                 </a>
             </li>
 
             <li class="nav-item d-none" id="link-listBusinessPremises">
                 <a class="nav-link" href="/Dashboard/listBusinessPremises">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>List of business premises</span>
+                    <span>Business premises List</span>
                 </a>
             </li>
 
@@ -148,65 +147,52 @@
             <li class="nav-item d-none" id="link-createCoin">
                 <a class="nav-link" href="/Dashboard/createCoin">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Create Currency</span>
+                    <span>Create new Currency</span>
                 </a>
             </li>
 
             <li class="nav-item d-none" id="link-listCoin">
                 <a class="nav-link" href="/Dashboard/listCoin">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Currency Information List</span>
+                    <span>Currency List</span>
                 </a>
             </li>
 
             <li class="nav-item d-none" id="link-VPermiseC">
                 <a class="nav-link" href="/Dashboard/VPermiseC">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>New Role</span>
+                    <span>Create new Role</span>
                 </a>
             </li>
-            <li class="nav-item d-none" id="link-VPermiseU">
-                <a class="nav-link" href="/Dashboard/VPermiseU">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Update a Role</span>
-                </a>
-            </li>
+
             <li class="nav-item d-none" id="link-VPermiseL">
                 <a class="nav-link" href="/Dashboard/VPermiseL">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Role List</span>
+                    <span>Roles List</span>
                 </a>
             </li>
+
             <li class="nav-item d-none" id="link-VTaxC">
                 <a class="nav-link" href="/Dashboard/VTaxC">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>New Tax</span>
+                    <span>Create new Tax</span>
                 </a>
             </li>
-            <li class="nav-item d-none" id="link-VTaxU">
-                <a class="nav-link" href="/Dashboard/VTaxU">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Update a Tax</span>
-                </a>
-            </li>
+
             <li class="nav-item d-none" id="link-VTaxL">
                 <a class="nav-link" href="/Dashboard/VTaxL">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Tax List</span>
+                    <span>Taxes List</span>
                 </a>
             </li>
+
             <li class="nav-item d-none" id="link-VViewC">
                 <a class="nav-link" href="/Dashboard/VViewC">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>New View</span>
+                    <span>Create new View</span>
                 </a>
             </li>
-            <li class="nav-item d-none" id="link-VViewU">
-                <a class="nav-link" href="/Dashboard/VViewU">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Update a View</span>
-                </a>
-            </li>
+
             <li class="nav-item d-none" id="link-VViewL">
                 <a class="nav-link" href="/Dashboard/VViewL">
                     <i class="fas fa-fw fa-chart-area"></i>
@@ -315,3 +301,31 @@
 </body>
 </html>
 
+
+            <li class="nav-item d-none" id="link-createSeat">
+                <a class="nav-link" href="/Dashboard/createSeat">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Create Seat</span>
+                </a>
+            </li>
+
+            <li class="nav-item d-none" id="link-listSeat">
+                <a class="nav-link" href="/Dashboard/listSeat">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>List of seats</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="link-createSchedule">
+                <a class="nav-link" href="/Dashboard/createSchedule">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Create Schedule</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="link-listSchedule">
+                <a class="nav-link" href="/Dashboard/listSchedule">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>List of schedules</span>
+                </a>
+            </li>

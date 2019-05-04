@@ -68,3 +68,7 @@ namespace CoreAPI
         }
     }
 }
+
+        public List<Airline> RetrieveAllApproval(string Approvement, string AirportId) {
+            return crudfactory.RetrieveAllApproval<Airline>(Approvement, AirportId);
+        }

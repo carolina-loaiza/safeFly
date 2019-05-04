@@ -6,21 +6,20 @@
     Layout = "~/Views/Shared/_LayoutTheme.cshtml";
 }
 
-@Html.CtrlTable(viewName: "vAirline", id: "tblAirlines", title: "Lista de Aerolíneas",
-    columnsTitle: "ID,Airline,Business,Administrator,Email,Phone Number,Representant Legal,Inscription Date,Status", ColumnsDataName: "ID,Name,BusinessName,Admin,Email,PhoneNumber,RepresentantLegal,InscriptionDate,Status", onSelectFunction: "BindFields")
-    
-
-<div>
-
-    <div class="card border-left-primary shadow h-100" style="margin-top: 50px;" id="cardAirline">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-md-8"><h5>Edit: </h5> <h6 id="airlineName"></h6></div>
-                <div class="col-md-4">
-                    @Html.CtrlButton(viewName: "vAirline", id: "btnModifyAirline", label: "Save", onClickFunction: "ModifyAirline", buttonType: "success")
-                </div>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Modify Airline</h1>
+    <div class="btn-block-custom container-spinner-button button-create-spinner">
+        @Html.CtrlButton(viewName: "vAirline", id: "btnModifyAirline", label: "Update", onClickFunction: "ModifyAirline", buttonType: "success")
+        <div class="justify-content-center container-spinner d-none" id="container-spinner">
+            <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
+    </div>
+</div>
+
+<div>
+    <div class="card border-left-primary shadow h-100"  id="cardAirline">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
@@ -37,7 +36,6 @@
                                     @Html.CtrlInput(id: "txtEmail", type: "text", label: "Email", columnDataName: "Email")
                                     @Html.CtrlInput(id: "txtPhoneNumber", type: "text", label: "Phone Number", columnDataName: "PhoneNumber")
                                     @Html.CtrlInput(id: "txtRepresentantLegal", type: "text", label: "Representant Legal", columnDataName: "RepresentantLegal")
-                                    @Html.CtrlInput(id: "txtUrlLogo", type: "text", label: "Url Logo", columnDataName: "UrlLogo")
                                 </div>
                             </div>
                         </form>

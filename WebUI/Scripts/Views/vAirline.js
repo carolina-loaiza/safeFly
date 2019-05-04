@@ -10,27 +10,41 @@
     this.modifyData = {};
     this.columns = "ID,Name,BusinessName,Admin,Email,PhoneNumber,RepresentantLegal,InscriptionDate,Status";
     sessionStorage.setItem('view', 'vAirline');
-
+     var userLogin = JSON.parse(sessionStorage.getItem("user"));
+     var CtrlActions = new ControlActions();
+     
     this.RetrieveAll = function () {
-        this.ctrlActions.FillTable(this.service, this.tblAirlineId, false);
-    }
-
-    this.ReloadTable = function () {
-        this.ctrlActions.FillTable(this.service, this.tblAirlineId, true);
+        if (userLogin.RolName == 'AdminAeropuerto') {
+            $.get(this.ctrlActions.GetUrlApiService('Airport/ByAdminID/'+userLogin.ID), function (response) {     
+                CtrlActions.FillTable('Airline/AllApproval/'+response.Data.LegalNumber+'/Activo', 'tblAirlines', false, false); 
+            })
+        } else {
+             this.ctrlActions.FillTable(this.service, this.tblAirlineId, false, false);
+        }
     }
     
     this.ModifyAirline = function () {
         var airlineData = {};
         var CtrlActions = this.ctrlActions;
+        var airlineDataModify = JSON.parse(sessionStorage.getItem("airlineDataModify"));
         airlineData = this.ctrlActions.GetDataForm('formModifyAirline');
+        
+        airlineData.InscriptionDate = airlineDataModify.InscriptionDate;
+        airlineData.Approvement = airlineDataModify.Approvement;
+        airlineData.Status = airlineDataModify.Status;
+        airlineData.UrlLogo = 'null';
+        
         $.put(this.ctrlActions.GetUrlApiService(this.service), airlineData, function (response) {            
             Swal.fire({
                 title: 'Complete',
                 text: 'The airline updated correctly.',
                type: 'success',
                 confirmButtonText: 'OK'
-           });
-           $('#formModifyAirline').trigger("reset");
+            }).then((result) => {
+                 if (userLogin.RolName == 'AdminAerolinea') {
+                    window.location.reload();
+                 }
+              })     
         })
         .fail(function (response) {
              var data = response.responseJSON;
@@ -40,7 +54,6 @@
                    type: 'error',
                     confirmButtonText: 'OK'
                });
-            console.log(data);
          })
     }
     
@@ -48,6 +61,9 @@
         var userData = {};
         var CtrlActions = this.ctrlActions;
         userData = this.ctrlActions.GetDataForm('frmEdition');
+        if (!userData) {
+            return false;
+        }
         $.post(this.ctrlActions.GetUrlApiService(this.serviceUser), userData, function (response) {            
              CtrlActions.PostToAPI("userxrolexview", {
                 "UserId": userData.ID,
@@ -71,21 +87,21 @@
                    type: 'error',
                     confirmButtonText: 'OK'
                });
-            console.log(data);
          })
     }
 
     this.CreateAirline = function () {
-        var airlineData = {};
-        
-        airlineData = this.ctrlActions.GetDataForm('formAirline');
+        var airlineData  = this.ctrlActions.GetDataForm('formAirline');
+        if (!airlineData) {
+            return false;
+        }
         airlineData.ID = (Math.floor(Math.random() * 10000) + 1000000) + "";
         airlineData.InscriptionDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
         airlineData.Approvement = "Inactivo";
         airlineData.Status = "Inactivo";
         sessionStorage.setItem("newAirlineID", airlineData.ID);
         $.post(this.ctrlActions.GetUrlApiService(this.service), airlineData, function (response) {            
-              $("#collapseOne-butto").attr("disabled", true)
+              $("#collapseTwo-button").attr("disabled", true)
               $("#collapseThree-button").attr("disabled", false)
               
              $('#collapseTwo').collapse({
@@ -103,7 +119,6 @@
                    type: 'error',
                     confirmButtonText: 'OK'
                });
-            console.log(data);
          })
     }
 
@@ -111,6 +126,17 @@
         this.modifyData = data;
         $('#airlineName').text(this.modifyData.Name);
         this.ctrlActions.BindFields('formModifyAirline', data);
+    }
+    
+   this.ObtenerInformacion = function () {
+        if (userLogin.RolName == 'AdminAerolinea') {
+            var ctrlActions =  this.ctrlActions;
+           $.get(this.ctrlActions.GetUrlApiService('Airline/ByAdminID/'+userLogin.ID), function (response) {            
+                ctrlActions.BindFields('formModifyAirline', response.Data);
+                sessionStorage.setItem('airlineDataModify', JSON.stringify(response.Data));
+            })
+            $("#formModifyAirline input[name=txtAdmin]").attr("disabled", true)
+        }
     }
 
     this.getAirportList = function () {
@@ -146,12 +172,14 @@
         })
         
        Swal.fire({
-              title: 'Request sent.',
-              text: 'The administrators of the airports will review your request.',
-              type: 'success',
-              confirmButtonText: 'OK'
-       });
-       $('#formSolicitude').trigger("reset");
+          title: 'Done!',
+          text: 'The application was send to the airports administrator for approval. We will send you an email with the confirmation.',
+          type: 'sucess',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ok'
+        }).then((result) => {
+              window.location.href = '/';
+        })
     }
 }
 
@@ -172,5 +200,9 @@ $(document).ready(function () {
         });
         
         vairline.getAirportList();
+    }
+    
+    if (window.location.href.includes('modifyAirline')) {
+        vairline.ObtenerInformacion();
     }
 });
