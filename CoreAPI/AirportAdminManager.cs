@@ -43,18 +43,21 @@ namespace CoreAPI
             }
         }
 
-      //  public List<User> RetrieveAll()
-       // {
-        //    return crudAirportAdmin.RetrieveAll<User>();
-      //  }
-
         public List<Administrator> RetrieveAll()
         {
             return crudAirportAdmin.RetrieveAll<Administrator>();
         }
-
-
-
+        
+        public List<User> RetrieveAllWithoutAirport()
+        {
+            return crudAirportAdmin.RetrieveAllWithoutAirport<User>();
+        }
+                
+        public List<Administrator> RetrieveAllAirportAdmin()
+        {
+            return crudAirportAdmin.RetrieveAllAirportAdmin<Administrator>();
+        }
+        
         public Administrator RetrieveById(Administrator admon)
         {
             Administrator c = null;
@@ -85,12 +88,3 @@ namespace CoreAPI
         }
     }
 }
-
-        public List<Administrator> RetrieveAllAirportAdmin()
-        {
-            return crudAirportAdmin.RetrieveAllAirportAdmin<Administrator>();
-        }
-        public List<User> RetrieveAllWithoutAirport()
-        {
-            return crudAirportAdmin.RetrieveAllWithoutAirport<User>();
-        }

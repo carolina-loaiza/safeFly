@@ -36,12 +36,33 @@ namespace CoreAPI
         public List<Airport> RetrieveAll() {
             return crudfactory.RetrieveAll<Airport>();
         }
+        
+       public List<Airport> RetrieveAllApproval(string Approvement, string AirlineID) {
+            return crudfactory.RetrieveAllApproval<Airport>(Approvement, AirlineID);
+        }
 
         public Airport RetrieveById(Airport a) {
             Airport tmpAirport = null;
             try
             {
                 tmpAirport = crudfactory.Retrieve<Airport>(a);
+                if (tmpAirport == null)
+                {
+                    throw new BussinessException(4);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.GetInstance().Process(ex);
+            }
+            return tmpAirport;
+        }
+        
+       public Airport RetrieveByAdminID(Airport a) {
+            Airport tmpAirport = null;
+            try
+            {
+                tmpAirport = crudfactory.RetrieveByAdminID<Airport>(a);
                 if (tmpAirport == null)
                 {
                     throw new BussinessException(4);
@@ -68,23 +89,3 @@ namespace CoreAPI
         }
     }
 }
-
-       public List<Airport> RetrieveAllApproval(string Approvement, string AirlineID) {
-            return crudfactory.RetrieveAllApproval<Airport>(Approvement, AirlineID);
-        }
-       public Airport RetrieveByAdminID(Airport a) {
-            Airport tmpAirport = null;
-            try
-            {
-                tmpAirport = crudfactory.RetrieveByAdminID<Airport>(a);
-                if (tmpAirport == null)
-                {
-                    throw new BussinessException(4);
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionManager.GetInstance().Process(ex);
-            }
-            return tmpAirport;
-        }

@@ -66,7 +66,7 @@ namespace WebAPI.Controllers
 
                 var mngpass = new PasswordManager();
                 DateTime ExpirationDate = DateTime.Today;
-                //mngpass.Create(user.Email, user.Password, ExpirationDate.AddYears(5), "Activo");
+                mngpass.Create(user.Email, user.Password, ExpirationDate.AddYears(5), "Activo");
 
                 apiResp = new ApiResponse();
                 apiResp.Message = "El Usuario se ha registrado";

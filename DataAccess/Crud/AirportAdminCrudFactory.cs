@@ -9,10 +9,12 @@ namespace DataAccess.Crud
     public class AirportAdminCrudFactory : CrudFactory
     {
         AirportAdminMapper mapper;
+        UserMapper userMapper;
 
         public AirportAdminCrudFactory() : base()
         {
             mapper = new AirportAdminMapper();
+            userMapper = new UserMapper();
             dao = SqlDao.GetInstance();
         }
 
@@ -22,8 +24,6 @@ namespace DataAccess.Crud
             var sqlOperation = mapper.GetCreateStatement(admon);
             dao.ExecuteProcedure(sqlOperation);
         }
-
-
 
         public override T Retrieve<T>(BaseEntity entity)
         {
@@ -56,26 +56,7 @@ namespace DataAccess.Crud
 
             return lstUsers;
         }
-
-        public override void Update(BaseEntity entity)
-        {
-            var admon = (User)entity;
-            dao.ExecuteProcedure(mapper.GetUpdateStatement(admon));
-        }
-
-        public override void Delete(BaseEntity entity)
-        {
-            var admon = (User)entity;
-            dao.ExecuteProcedure(mapper.GetDeleteStatement(admon));
-        }
-
-        public override void Activar(BaseEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
-
+        
         public List<T> RetrieveAllWithoutAirport<T>()
         {
             var lstUsers = new List<T>();
@@ -111,3 +92,22 @@ namespace DataAccess.Crud
 
             return lstUsers;
         }
+
+        public override void Update(BaseEntity entity)
+        {
+            var admon = (User)entity;
+            dao.ExecuteProcedure(mapper.GetUpdateStatement(admon));
+        }
+
+        public override void Delete(BaseEntity entity)
+        {
+            var admon = (User)entity;
+            dao.ExecuteProcedure(mapper.GetDeleteStatement(admon));
+        }
+
+        public override void Activar(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

@@ -1,5 +1,4 @@
-
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +39,19 @@ namespace DataAccess.Crud
             return default(T);
         }
         
+        public T RetrieveByAdminID<T>(BaseEntity entity)
+        {
+            var lstResult = dao.ExecuteQueryProcedure(mapper.GetRetriveByAdminIDStatement(entity));
+            var lista = new Dictionary<string, object>();
+            if(lstResult.Count > 0)
+            {
+                lista = lstResult[0];
+                var objs = mapper.BuildObject(lista);
+                return (T)Convert.ChangeType(objs, typeof(T));
+            }
+            return default(T);
+        }
+        
         public override List<T> RetrieveAll<T>()
         {
             var listado = new List<T>();
@@ -53,6 +65,24 @@ namespace DataAccess.Crud
                 }
             }
             return listado;
+        }
+        
+        public List<T> RetrieveAllApproval<T>(string Approvement, string AirlineID)
+        {
+            var lstAirline = new List<T>();
+
+            var lstResult = dao.ExecuteQueryProcedure(mapper.GetRetriveAllApprovalStatement(Approvement, AirlineID));
+            var dic = new Dictionary<string, object>();
+            if (lstResult.Count > 0)
+            {
+                var objs = mapper.BuildObjects(lstResult);
+                foreach (var c in objs)
+                {
+                    lstAirline.Add((T)Convert.ChangeType(c, typeof(T)));
+                }
+            }
+
+            return lstAirline;
         }
 
         public override void Update(BaseEntity entity)

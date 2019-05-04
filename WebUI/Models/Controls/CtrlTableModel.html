@@ -11,15 +11,13 @@
         var table = $('#-#Id-').DataTable();
         //el siguiente codigo agrega un eventoClic y se parametriza en OnSelect (evento)
         $('#-#Id- tbody').on('click', 'tr', function () {
-            console.log(this);
-            console.log(table.row(this));
             var data = table.row(this).data();
             sessionStorage.setItem('-#Id-_selected', JSON.stringify(data));
 
             var view = new -#ViewName-();
             if (view != undefined) {
-                //view.-#FunctionName-(data);
-                view.BindFields-(data);
+                view.-#FunctionName-(data);
+                //view.BindFields-(data);
             }
         });
     });</script>
